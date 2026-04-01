@@ -277,6 +277,18 @@ const FIFA_CODE = {
 
 // Alternate spellings FIFA might use in the API response
 const ALIASES = {
+  // Display name -> API/source name
+  'south korea':         'korea republic',
+  'czech republic':      'czechia',
+  'united states':       'usa',
+  'turkey':              'türkiye',
+  'ivory coast':         "côte d'ivoire",
+  'iran':                'ir iran',
+  'cape verde':          'cabo verde',
+  'dr congo':            'congo dr',
+  'curaçao':             'curacao',
+
+  // API/source variants
   // Ivory Coast
   "cote d'ivoire":      'ivory coast',
   "côte d'ivoire":      'ivory coast',
@@ -336,17 +348,22 @@ const BAR_COLOURS = ['#da3633','#e3692e','#d29922','#2ea043',
     for (const t of data.rankings) {
       const key = t.name.toLowerCase().trim();
       lookup.set(key, t);
-      // Also index by any alias that maps TO this name
-      for (const [alias, canonical] of Object.entries(ALIASES)) {
-        if (canonical === key) lookup.set(alias, t);
-      }
     }
 
     function findTeam(displayName) {
       const key = displayName.toLowerCase().trim();
-      return lookup.get(key)
-          || lookup.get(ALIASES[key] ?? '')
-          || null;
+        if (lookup.has(key)) return lookup.get(key);
+
+        // Direct alias (display -> API/source name)
+        const mapped = ALIASES[key];
+        if (mapped && lookup.has(mapped)) return lookup.get(mapped);
+
+        // Reverse alias (API/source -> display), helpful if input names change
+        for (const [alias, canonical] of Object.entries(ALIASES)) {
+          if (canonical === key && lookup.has(alias)) return lookup.get(alias);
+        }
+
+        return null;
     }
 
     // Compute group strengths
