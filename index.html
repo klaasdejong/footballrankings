@@ -57,6 +57,21 @@
       color: var(--muted);
     }
     #last-updated strong { color: var(--text); }
+    #deep-refresh-btn {
+      margin-top: 0.6rem;
+      margin-left: 0.5rem;
+      background: #0f141b;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 0.25rem 0.9rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+    #deep-refresh-btn:hover {
+      color: var(--text);
+      border-color: #4b5561;
+    }
     /* ── Section nav ── */
     #section-nav {
       display: flex;
@@ -601,6 +616,7 @@
   <h1>⚽ 2026 World Cup — <span>Group Strength Ranker</span></h1>
   <p>All 12 groups ranked toughest → easiest using live FIFA points</p>
   <div id="last-updated">Loading rankings…</div>
+  <button id="deep-refresh-btn" type="button" aria-label="Clear cache and reload latest data">Deep Refresh</button>
 </header>
 
 <nav id="section-nav" aria-label="Page sections">
@@ -771,6 +787,7 @@ const BAR_COLOURS = ['#da3633','#e3692e','#d29922','#2ea043',
   const errorEl   = document.getElementById('error');
   const groupsEl  = document.getElementById('groups');
   const updatedEl = document.getElementById('last-updated');
+  const deepRefreshBtnEl = document.getElementById('deep-refresh-btn');
   const warningEl = document.getElementById('warning');
   const fishEl    = document.getElementById('fish-spotlight');
   const deltaEl   = document.getElementById('delta-spotlight');
@@ -800,6 +817,28 @@ const BAR_COLOURS = ['#da3633','#e3692e','#d29922','#2ea043',
   }
 
   sectionBtns.forEach(btn => btn.addEventListener('click', () => setActiveSection(btn.dataset.section)));
+
+  deepRefreshBtnEl?.addEventListener('click', async () => {
+    deepRefreshBtnEl.disabled = true;
+    deepRefreshBtnEl.textContent = 'Refreshing...';
+    try {
+      if ('serviceWorker' in navigator) {
+        const regs = await navigator.serviceWorker.getRegistrations();
+        await Promise.all(regs.map((reg) => reg.unregister()));
+      }
+
+      if ('caches' in window) {
+        const names = await caches.keys();
+        await Promise.all(names.map((name) => caches.delete(name)));
+      }
+    } catch (_) {
+      // Best effort only; always continue with hard reload attempt.
+    }
+
+    const url = new URL(window.location.href);
+    url.searchParams.set('_refresh', Date.now().toString());
+    window.location.replace(url.toString());
+  });
 
   try {
     const res = await fetch('./data/rankings.json');
