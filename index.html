@@ -101,6 +101,26 @@
       font-weight: 700;
       margin-bottom: 0.2rem;
     }
+    .fish-team-row {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin-bottom: 0.2rem;
+    }
+    .fish-team-flag {
+      width: 26px;
+      height: 18px;
+      object-fit: cover;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .fish-flag-placeholder {
+      width: 26px;
+      height: 18px;
+      background: var(--border);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
     .fish-meta {
       font-size: 0.82rem;
       color: var(--muted);
@@ -462,6 +482,17 @@ const BAR_COLOURS = ['#da3633','#e3692e','#d29922','#2ea043',
     const smallestFish = toughestGroup ? pickLowestKnownTeam(toughestGroup) : null;
     const biggestFish = easiestGroup ? pickHighestKnownTeam(easiestGroup) : null;
 
+    function spotlightFlagHtml(teamName, teamFlagUrl) {
+      const flagCode = FIFA_CODE[teamName];
+      const imgHtml = teamFlagUrl
+        ? `<img class="fish-team-flag" src="${teamFlagUrl}" alt="${teamName} flag" loading="lazy" onerror="this.style.display='none';this.nextSibling.style.display='block'">`
+        : flagCode
+          ? `<img class="fish-team-flag" src="https://api.fifa.com/api/v3/picture/flags-sq-3/${flagCode}" alt="${teamName} flag" loading="lazy" onerror="this.style.display='none';this.nextSibling.style.display='block'">`
+          : '';
+      const placeholderHtml = `<span class="fish-flag-placeholder" style="${(teamFlagUrl || flagCode) ? 'display:none' : ''}"></span>`;
+      return `${imgHtml}${placeholderHtml}`;
+    }
+
     if (smallestFish && biggestFish) {
       const sfPts = smallestFish.points > 0 ? smallestFish.points.toFixed(2) : '—';
       const sfRank = smallestFish.rank != null ? `#${smallestFish.rank}` : '—';
@@ -471,12 +502,18 @@ const BAR_COLOURS = ['#da3633','#e3692e','#d29922','#2ea043',
       fishEl.innerHTML = `
         <article class="fish-card">
           <div class="fish-kicker">Smallest Fish In Biggest Pond</div>
-          <div class="fish-team">${smallestFish.name}</div>
+          <div class="fish-team-row">
+            ${spotlightFlagHtml(smallestFish.name, smallestFish.flagUrl)}
+            <div class="fish-team">${smallestFish.name}</div>
+          </div>
           <div class="fish-meta">Group ${toughestGroup.letter} • ${sfPts} pts • ${sfRank}</div>
         </article>
         <article class="fish-card">
           <div class="fish-kicker">Biggest Fish In Smallest Pond</div>
-          <div class="fish-team">${biggestFish.name}</div>
+          <div class="fish-team-row">
+            ${spotlightFlagHtml(biggestFish.name, biggestFish.flagUrl)}
+            <div class="fish-team">${biggestFish.name}</div>
+          </div>
           <div class="fish-meta">Group ${easiestGroup.letter} • ${bfPts} pts • ${bfRank}</div>
         </article>
       `;
@@ -509,12 +546,18 @@ const BAR_COLOURS = ['#da3633','#e3692e','#d29922','#2ea043',
       deltaEl.innerHTML = `
         <article class="fish-card">
           <div class="fish-kicker">Most Above Group Baseline</div>
-          <div class="fish-team">${mostAboveAvg.name}</div>
+          <div class="fish-team-row">
+            ${spotlightFlagHtml(mostAboveAvg.name, mostAboveAvg.flagUrl)}
+            <div class="fish-team">${mostAboveAvg.name}</div>
+          </div>
           <div class="fish-meta">Group ${mostAboveAvg.groupLetter} • ${mostAboveAvg.points.toFixed(2)} pts • ${aboveDiff} vs group avg</div>
         </article>
         <article class="fish-card">
           <div class="fish-kicker">Most Below Group Baseline</div>
-          <div class="fish-team">${mostBelowAvg.name}</div>
+          <div class="fish-team-row">
+            ${spotlightFlagHtml(mostBelowAvg.name, mostBelowAvg.flagUrl)}
+            <div class="fish-team">${mostBelowAvg.name}</div>
+          </div>
           <div class="fish-meta">Group ${mostBelowAvg.groupLetter} • ${mostBelowAvg.points.toFixed(2)} pts • ${belowDiff} vs group avg</div>
         </article>
       `;
