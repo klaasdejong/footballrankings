@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026 World Cup – Group Strength Ranker</title>
+  <style>
+    :root {
+      --bg:        #0d1117;
+      --surface:   #161b22;
+      --border:    #30363d;
+      --text:      #e6edf3;
+      --muted:     #8b949e;
+      --accent:    #238636;
+      --gold:      #d29922;
+      --red:       #da3633;
+      --orange:    #e3692e;
+      --yellow:    #d29922;
+      --green:     #2ea043;
+      --radius:    10px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      padding: 1.5rem 1rem 3rem;
+    }
+
+    /* ── Header ── */
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    header h1 {
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.4rem;
+    }
+    header h1 span { color: var(--gold); }
+    header p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    #last-updated {
+      display: inline-block;
+      margin-top: 0.6rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 0.25rem 0.9rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    #last-updated strong { color: var(--text); }
+
+    /* ── Warning banner ── */
+    #warning {
+      display: none;
+      background: #2d1e00;
+      border: 1px solid var(--gold);
+      border-radius: var(--radius);
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #f0c060;
+      max-width: 840px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── Loading / error states ── */
+    #loading, #error {
+      text-align: center;
+      padding: 4rem 1rem;
+      color: var(--muted);
+    }
+    #error { color: var(--red); }
+    .spinner {
+      width: 36px; height: 36px;
+      border: 3px solid var(--border);
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 1rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Grid ── */
+    #groups {
+      display: none;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr));
+      gap: 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ── Group card ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.7rem 1rem 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .card-rank {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .card-rank span { color: var(--text); font-size: 1rem; }
+    .group-label {
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+    .difficulty-badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .d-deadly  { background: #3a0a0a; color: #f47067; border: 1px solid #6e2727; }
+    .d-hard    { background: #2d1500; color: #e3692e; border: 1px solid #6e3310; }
+    .d-medium  { background: #2b2000; color: #d29922; border: 1px solid #6e5010; }
+    .d-easy    { background: #072012; color: #56d364; border: 1px solid #1a5c2e; }
+
+    /* strength bar */
+    .bar-track {
+      height: 3px;
+      background: var(--border);
+    }
+    .bar-fill {
+      height: 100%;
+      transition: width 0.6s ease;
+    }
+
+    /* team rows */
+    .team-list { padding: 0.3rem 0; }
+    .team-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.45rem 1rem;
+    }
+    .team-row:hover { background: rgba(255,255,255,0.03); }
+    .team-flag {
+      width: 28px;
+      height: 20px;
+      object-fit: cover;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .flag-placeholder {
+      width: 28px;
+      height: 20px;
+      background: var(--border);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .team-name {
+      flex: 1;
+      font-size: 0.88rem;
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .team-rank {
+      font-size: 0.75rem;
+      color: var(--muted);
+      min-width: 2.5rem;
+      text-align: right;
+    }
+    .team-points {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--muted);
+      min-width: 4rem;
+      text-align: right;
+    }
+    .team-points.known { color: var(--text); }
+
+    /* card footer */
+    .card-footer {
+      border-top: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .avg-label { font-size: 0.72rem; color: var(--muted); }
+    .avg-value { font-size: 0.88rem; font-weight: 700; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      margin-top: 2.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    footer a { color: var(--muted); }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>⚽ 2026 World Cup — <span>Group Strength Ranker</span></h1>
+  <p>All 12 groups ranked toughest → easiest using live FIFA points</p>
+  <div id="last-updated">Loading rankings…</div>
+</header>
+
+<div id="warning">
+  ⚠️ Some teams are missing from the rankings data (seed file only). 
+  <strong>Trigger the GitHub Action</strong> to fetch the full 210-team list. 
+  Missing teams are shown with 0 points and pushed to the bottom of each group.
+</div>
+
+<div id="loading"><div class="spinner"></div>Fetching rankings…</div>
+<div id="error" style="display:none"></div>
+<div id="groups" role="list"></div>
+
+<footer>
+  Rankings pulled from the <a href="https://inside.fifa.com/fifa-world-ranking/men" target="_blank" rel="noopener">FIFA World Ranking</a>.
+  Group draw source: <a href="https://en.wikipedia.org/wiki/2026_FIFA_World_Cup" target="_blank" rel="noopener">Wikipedia</a>.
+</footer>
+
+<script>
+// ── 2026 World Cup Groups (fixed after Dec 5 2025 draw) ──────────────────────
+const WC_GROUPS = {
+  A: ['Mexico',     'South Africa',         'South Korea',  'Czech Republic'],
+  B: ['Canada',     'Bosnia and Herzegovina','Qatar',        'Switzerland'],
+  C: ['Brazil',     'Morocco',              'Haiti',        'Scotland'],
+  D: ['United States','Paraguay',           'Australia',    'Turkey'],
+  E: ['Germany',    'Curaçao',              'Ivory Coast',  'Ecuador'],
+  F: ['Netherlands','Japan',                'Sweden',       'Tunisia'],
+  G: ['Belgium',    'Egypt',                'Iran',         'New Zealand'],
+  H: ['Spain',      'Cape Verde',           'Saudi Arabia', 'Uruguay'],
+  I: ['France',     'Senegal',              'Iraq',         'Norway'],
+  J: ['Argentina',  'Algeria',              'Austria',      'Jordan'],
+  K: ['Portugal',   'DR Congo',             'Uzbekistan',   'Colombia'],
+  L: ['England',    'Croatia',              'Ghana',        'Panama'],
+};
+
+// ── Hardcoded FIFA 3-letter codes for flag fallback ──────────────────────────
+const FIFA_CODE = {
+  'Mexico': 'MEX', 'South Africa': 'RSA', 'South Korea': 'KOR',
+  'Czech Republic': 'CZE', 'Canada': 'CAN',
+  'Bosnia and Herzegovina': 'BIH', 'Qatar': 'QAT', 'Switzerland': 'SUI',
+  'Brazil': 'BRA', 'Morocco': 'MAR', 'Haiti': 'HAI', 'Scotland': 'SCO',
+  'United States': 'USA', 'Paraguay': 'PAR', 'Australia': 'AUS',
+  'Turkey': 'TUR', 'Germany': 'GER', 'Curaçao': 'CUW',
+  'Ivory Coast': 'CIV', 'Ecuador': 'ECU', 'Netherlands': 'NED',
+  'Japan': 'JPN', 'Sweden': 'SWE', 'Tunisia': 'TUN', 'Belgium': 'BEL',
+  'Egypt': 'EGY', 'Iran': 'IRN', 'New Zealand': 'NZL', 'Spain': 'ESP',
+  'Cape Verde': 'CPV', 'Saudi Arabia': 'KSA', 'Uruguay': 'URU',
+  'France': 'FRA', 'Senegal': 'SEN', 'Iraq': 'IRQ', 'Norway': 'NOR',
+  'Argentina': 'ARG', 'Algeria': 'ALG', 'Austria': 'AUT', 'Jordan': 'JOR',
+  'Portugal': 'POR', 'DR Congo': 'COD', 'Uzbekistan': 'UZB',
+  'Colombia': 'COL', 'England': 'ENG', 'Croatia': 'CRO',
+  'Ghana': 'GHA', 'Panama': 'PAN',
+};
+
+// Alternate spellings FIFA might use in the API response
+const ALIASES = {
+  "cote d'ivoire": 'ivory coast',
+  'cote divoire':  'ivory coast',
+  'czechia':       'czech republic',
+  'türkiye':       'turkey',
+  'curacao':       'curaçao',
+  'usa':           'united states',
+  'congo dr':      'dr congo',
+  'bosnia-herzegovina':       'bosnia and herzegovina',
+  'bosnia & herzegovina':     'bosnia and herzegovina',
+};
+
+// ── Difficulty tiers ──────────────────────────────────────────────────────────
+function difficultyClass(rank) {
+  if (rank <= 3)  return ['d-deadly', 'Deadly'];
+  if (rank <= 6)  return ['d-hard',   'Hard'];
+  if (rank <= 9)  return ['d-medium', 'Medium'];
+  return              ['d-easy',   'Easy'];
+}
+
+// Colour for the strength bar fill
+const BAR_COLOURS = ['#da3633','#e3692e','#d29922','#2ea043',
+                     '#2ea043','#2ea043','#2ea043','#2ea043',
+                     '#2ea043','#2ea043','#2ea043','#2ea043'];
+
+// ── Main ──────────────────────────────────────────────────────────────────────
+(async () => {
+  const loadEl    = document.getElementById('loading');
+  const errorEl   = document.getElementById('error');
+  const groupsEl  = document.getElementById('groups');
+  const updatedEl = document.getElementById('last-updated');
+  const warningEl = document.getElementById('warning');
+
+  try {
+    const res = await fetch('./data/rankings.json');
+    if (!res.ok) throw new Error(`Could not load rankings data (HTTP ${res.status})`);
+    const data = await res.json();
+
+    // Build lookup: normalised name → { rank, points, flagUrl }
+    const lookup = new Map();
+    for (const t of data.rankings) {
+      const key = t.name.toLowerCase().trim();
+      lookup.set(key, t);
+      // Also index by any alias that maps TO this name
+      for (const [alias, canonical] of Object.entries(ALIASES)) {
+        if (canonical === key) lookup.set(alias, t);
+      }
+    }
+
+    function findTeam(displayName) {
+      const key = displayName.toLowerCase().trim();
+      return lookup.get(key)
+          || lookup.get(ALIASES[key] ?? '')
+          || null;
+    }
+
+    // Compute group strengths
+    const groups = Object.entries(WC_GROUPS).map(([letter, teams]) => {
+      let totalPoints = 0;
+      let missingCount = 0;
+      const resolved = teams.map(name => {
+        const t = findTeam(name);
+        if (t) {
+          totalPoints += t.points;
+          return { name, rank: t.rank, points: t.points, flagUrl: t.flagUrl };
+        }
+        missingCount++;
+        return { name, rank: null, points: 0, flagUrl: null };
+      });
+      const avgPoints = totalPoints / 4;
+      return { letter, teams: resolved, avgPoints, missingCount };
+    });
+
+    // Check if data looks incomplete
+    const totalMissing = groups.reduce((s, g) => s + g.missingCount, 0);
+    if (totalMissing > 6) {
+      warningEl.style.display = 'block';
+    }
+
+    // Sort by avg points descending (toughest first)
+    groups.sort((a, b) => b.avgPoints - a.avgPoints);
+
+    // Find max avg for bar scaling
+    const maxAvg = groups[0].avgPoints || 1;
+
+    // Render
+    groups.forEach((g, idx) => {
+      const [dClass, dLabel] = difficultyClass(idx + 1);
+      const barPct = maxAvg > 0 ? (g.avgPoints / maxAvg) * 100 : 0;
+      const barColour = BAR_COLOURS[idx] ?? '#2ea043';
+
+      const card = document.createElement('article');
+      card.className = 'card';
+      card.setAttribute('role', 'listitem');
+
+      const teamsHtml = g.teams
+        .sort((a, b) => (a.rank ?? 9999) - (b.rank ?? 9999))
+        .map(t => {
+          const flagCode = FIFA_CODE[t.name];
+          const imgHtml = t.flagUrl
+            ? `<img class="team-flag" src="${t.flagUrl}" alt="${t.name} flag" loading="lazy" onerror="this.style.display='none';this.nextSibling.style.display='block'">`
+            : flagCode
+              ? `<img class="team-flag" src="https://api.fifa.com/api/v3/picture/flags-sq-3/${flagCode}" alt="${t.name} flag" loading="lazy" onerror="this.style.display='none';this.nextSibling.style.display='block'">`
+              : '';
+          const placeholderHtml = `<span class="flag-placeholder" style="${(t.flagUrl || flagCode) ? 'display:none' : ''}"></span>`;
+          const rankHtml = t.rank != null ? `#${t.rank}` : '—';
+          const ptsHtml  = t.points > 0   ? t.points.toFixed(2) : '—';
+          const ptsClass = t.points > 0   ? 'team-points known' : 'team-points';
+
+          return `
+          <div class="team-row">
+            ${imgHtml}${placeholderHtml}
+            <span class="team-name">${t.name}</span>
+            <span class="team-rank">${rankHtml}</span>
+            <span class="${ptsClass}">${ptsHtml}</span>
+          </div>`;
+        }).join('');
+
+      card.innerHTML = `
+        <div class="card-header">
+          <div class="card-rank">Rank <span>#${idx + 1}</span></div>
+          <div class="group-label">Group ${g.letter}</div>
+          <div class="difficulty-badge ${dClass}">${dLabel}</div>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:${barPct.toFixed(1)}%;background:${barColour}"></div>
+        </div>
+        <div class="team-list">${teamsHtml}</div>
+        <div class="card-footer">
+          <span class="avg-label">Avg. FIFA Points</span>
+          <span class="avg-value">${g.avgPoints > 0 ? g.avgPoints.toFixed(2) : '—'}</span>
+        </div>
+      `;
+
+      groupsEl.appendChild(card);
+    });
+
+    // Show ranking date
+    updatedEl.innerHTML = `Rankings: <strong>${data.updatedAt}</strong>`;
+
+    loadEl.style.display  = 'none';
+    groupsEl.style.display = 'grid';
+
+  } catch (err) {
+    loadEl.style.display  = 'none';
+    errorEl.style.display = 'block';
+    errorEl.innerHTML = `
+      <strong>Failed to load rankings data</strong><br>
+      ${err.message}<br><br>
+      <small>Make sure <code>data/rankings.json</code> exists.
+      Run the GitHub Action (or <code>node scripts/fetch-rankings.mjs</code> locally) to generate it.</small>
+    `;
+  }
+})();
+</script>
+</body>
+</html>
