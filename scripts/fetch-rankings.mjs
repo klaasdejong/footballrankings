@@ -17,7 +17,10 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const FIFA_API_BASE = 'https://www.fifa.com/api/ranking-overview';
 const OUTPUT_PATH   = join(__dirname, '..', 'data', 'rankings.json');
-const FALLBACK_RANKING_URL = 'https://football-ranking.com/fifa-rankings';
+const FALLBACK_RANKING_URLS = [
+  'https://football-ranking.com/fifa-world-rankings',
+  'https://football-ranking.com/fifa-rankings',
+];
 
 // WC2026 display names — used only for the diagnostic check at the end.
 const WC2026_TEAMS = [
@@ -209,7 +212,9 @@ function parseFallbackRows(html) {
     const name = nameText.replace(/\s*\([A-Z]{2,4}\)\s*$/, '').trim();
     if (!name) continue;
 
-    const pointsMatch = cells[2].match(/<b>([0-9,]+\.[0-9]+)<\/b>/i);
+    const pointsMatch =
+      cells[2].match(/<b>([0-9,]+\.[0-9]+)<\/b>/i) ||
+      cells[2].match(/([0-9,]+\.[0-9]+)/);
     if (!pointsMatch) continue;
     const points = Number(pointsMatch[1].replace(/,/g, ''));
     if (!Number.isFinite(points)) continue;
@@ -237,29 +242,32 @@ async function tryFallbackSource() {
   const all = [];
   let dateText = 'Unknown date';
 
-  for (let page = 1; page <= 8; page++) {
-    const url = page === 1 ? FALLBACK_RANKING_URL : `${FALLBACK_RANKING_URL}?page=${page}`;
-    try {
-      console.log(`  GET ${url}`);
-      const res = await fetch(url, { headers: HTML_HEADERS });
-      if (!res.ok) {
-        console.warn(`  → HTTP ${res.status} on page ${page}`);
+  for (const baseUrl of FALLBACK_RANKING_URLS) {
+    console.log(`  Source base: ${baseUrl}`);
+    for (let page = 1; page <= 8; page++) {
+      const url = page === 1 ? baseUrl : `${baseUrl}?page=${page}`;
+      try {
+        console.log(`  GET ${url}`);
+        const res = await fetch(url, { headers: HTML_HEADERS });
+        if (!res.ok) {
+          console.warn(`  → HTTP ${res.status} on page ${page}`);
+          break;
+        }
+
+        const html = await res.text();
+        if (dateText === 'Unknown date') dateText = parseFallbackDateText(html);
+
+        const rows = parseFallbackRows(html);
+        console.log(`  → parsed ${rows.length} rows from page ${page}`);
+        if (rows.length === 0) break;
+
+        all.push(...rows);
+
+        // Keep going until we hit an empty page.
+      } catch (err) {
+        console.warn(`  → Error on fallback page ${page}: ${err.message}`);
         break;
       }
-
-      const html = await res.text();
-      if (page === 1) dateText = parseFallbackDateText(html);
-
-      const rows = parseFallbackRows(html);
-      console.log(`  → parsed ${rows.length} rows from page ${page}`);
-      if (rows.length === 0) break;
-
-      all.push(...rows);
-
-      // Keep going until we hit an empty page.
-    } catch (err) {
-      console.warn(`  → Error on fallback page ${page}: ${err.message}`);
-      break;
     }
   }
 
@@ -268,13 +276,33 @@ async function tryFallbackSource() {
     return null;
   }
 
-  const deduped = Array.from(new Map(all.map((r) => [r.name.toLowerCase(), r])).values())
-    .sort((a, b) => a.rank - b.rank);
+  const byName = new Map();
+  for (const row of all) {
+    const key = row.name.toLowerCase();
+    const existing = byName.get(key);
+    if (!existing) {
+      byName.set(key, row);
+      continue;
+    }
+
+    // Keep the better (lower) rank when the same team appears across sources.
+    if (row.rank < existing.rank) {
+      byName.set(key, row);
+      continue;
+    }
+
+    // If rank ties, prefer row with non-empty flag URL.
+    if (row.rank === existing.rank && !existing.flagUrl && row.flagUrl) {
+      byName.set(key, row);
+    }
+  }
+
+  const deduped = Array.from(byName.values()).sort((a, b) => a.rank - b.rank);
 
   return {
     dateText,
     rankings: deduped,
-    source: 'football-ranking.com fallback',
+    source: 'football-ranking.com fallback (merged sources)',
   };
 }
 
