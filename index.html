@@ -277,15 +277,32 @@ const FIFA_CODE = {
 
 // Alternate spellings FIFA might use in the API response
 const ALIASES = {
-  "cote d'ivoire": 'ivory coast',
-  'cote divoire':  'ivory coast',
-  'czechia':       'czech republic',
-  'türkiye':       'turkey',
-  'curacao':       'curaçao',
-  'usa':           'united states',
-  'congo dr':      'dr congo',
-  'bosnia-herzegovina':       'bosnia and herzegovina',
-  'bosnia & herzegovina':     'bosnia and herzegovina',
+  // Ivory Coast
+  "cote d'ivoire":      'ivory coast',
+  "côte d'ivoire":      'ivory coast',
+  'cote divoire':       'ivory coast',
+  // Korea
+  'korea republic':     'south korea',
+  'korea rep.':         'south korea',
+  'republic of korea':  'south korea',
+  // Czech Republic
+  'czechia':            'czech republic',
+  // Turkey
+  'türkiye':            'turkey',
+  // Curaçao
+  'curacao':            'curaçao',
+  // USA
+  'usa':                'united states',
+  // Cape Verde
+  'cabo verde':         'cape verde',
+  // DR Congo
+  'congo dr':           'dr congo',
+  'congo, dr':          'dr congo',
+  'democratic republic of the congo': 'dr congo',
+  // Bosnia
+  'bosnia-herzegovina':   'bosnia and herzegovina',
+  'bosnia & herzegovina': 'bosnia and herzegovina',
+  'bosnia herzegovina':   'bosnia and herzegovina',
 };
 
 // ── Difficulty tiers ──────────────────────────────────────────────────────────
@@ -351,8 +368,15 @@ const BAR_COLOURS = ['#da3633','#e3692e','#d29922','#2ea043',
 
     // Check if data looks incomplete
     const totalMissing = groups.reduce((s, g) => s + g.missingCount, 0);
-    if (totalMissing > 6) {
+    if (totalMissing > 0) {
+      const missingNames = groups
+        .flatMap(g => g.teams.filter(t => t.rank === null).map(t => t.name))
+        .sort();
+      warningEl.textContent =
+        `⚠ ${totalMissing} team(s) not found in rankings data: ${missingNames.join(', ')}. Showing available data only.`;
       warningEl.style.display = 'block';
+      console.warn('[WC Ranker] Unmatched teams:', missingNames);
+      console.info('[WC Ranker] All team names in rankings.json:', data.rankings.map(t => t.name).sort());
     }
 
     // Sort by avg points descending (toughest first)

@@ -1,10 +1,12 @@
 /**
- * Fetches the latest FIFA Men's World Ranking from FIFA's internal API
- * and writes the result to data/rankings.json.
+ * Fetches the latest FIFA Men's World Ranking and writes data/rankings.json.
  *
- * Designed to run in a GitHub Actions workflow (Node 20, zero npm dependencies).
- * Exits with code 1 on any failure so the workflow fails loudly
- * rather than silently overwriting good data with empty/broken data.
+ * Strategy (tries each approach in order until one returns ≥50 teams):
+ *  1. Hit the ranking API directly with no dateId — FIFA may serve latest data.
+ *  2. Probe recent numeric dateIds (counts down from a known-recent ceiling).
+ *  3. Scrape __NEXT_DATA__ from the ranking HTML page (may be blocked by CF).
+ *
+ * Exits with code 1 on failure so the GitHub Actions workflow fails visibly.
  */
 
 import { writeFile, mkdir } from 'fs/promises';
@@ -12,117 +14,199 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+const FIFA_API_BASE = 'https://www.fifa.com/api/ranking-overview';
+const OUTPUT_PATH   = join(__dirname, '..', 'data', 'rankings.json');
 
-const RANKING_PAGE_URLS = [
-  'https://inside.fifa.com/fifa-world-ranking/men',
-  'https://www.fifa.com/fifa-world-ranking/men',
+// WC2026 display names — used only for the diagnostic check at the end.
+const WC2026_TEAMS = [
+  'Mexico','South Africa','South Korea','Czech Republic',
+  'Canada','Bosnia and Herzegovina','Qatar','Switzerland',
+  'Brazil','Morocco','Haiti','Scotland',
+  'United States','Paraguay','Australia','Turkey',
+  'Germany','Curaçao','Ivory Coast','Ecuador',
+  'Netherlands','Japan','Sweden','Tunisia',
+  'Belgium','Egypt','Iran','New Zealand',
+  'Spain','Cape Verde','Saudi Arabia','Uruguay',
+  'France','Senegal','Iraq','Norway',
+  'Argentina','Algeria','Austria','Jordan',
+  'Portugal','DR Congo','Uzbekistan','Colombia',
+  'England','Croatia','Ghana','Panama',
 ];
 
-const FIFA_API_BASE = 'https://www.fifa.com/api/ranking-overview';
-const OUTPUT_PATH = join(__dirname, '..', 'data', 'rankings.json');
-
-const HEADERS = {
+const API_HEADERS = {
   'User-Agent':
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 ' +
     '(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-  Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  Accept: 'application/json, text/plain, */*',
   'Accept-Language': 'en-US,en;q=0.5',
 };
 
-async function safeFetch(url, options = {}) {
-  const res = await fetch(url, { headers: HEADERS, ...options });
-  if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText} — ${url}`);
-  return res;
+const HTML_HEADERS = {
+  ...API_HEADERS,
+  Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+};
+
+// ---------------------------------------------------------------------------
+// Shared JSON fetch helper
+// ---------------------------------------------------------------------------
+async function tryFetchJson(url) {
+  try {
+    console.log(`  GET ${url}`);
+    const res = await fetch(url, { headers: API_HEADERS });
+    if (!res.ok) {
+      console.warn(`  → HTTP ${res.status} ${res.statusText}`);
+      return null;
+    }
+    const text = await res.text();
+    if (text.trimStart().startsWith('<')) {
+      console.warn(`  → Got HTML instead of JSON (likely Cloudflare block)`);
+      return null;
+    }
+    let data;
+    try { data = JSON.parse(text); } catch {
+      console.warn(`  → Response is not valid JSON`);
+      return null;
+    }
+    if (!Array.isArray(data?.rankings) || data.rankings.length < 50) {
+      console.warn(`  → Unexpected shape or too few entries (${data?.rankings?.length ?? 0})`);
+      return null;
+    }
+    return data;
+  } catch (err) {
+    console.warn(`  → Error: ${err.message}`);
+    return null;
+  }
 }
 
-/**
- * Tries each ranking page URL until one returns valid __NEXT_DATA__ with a
- * dates list, then returns the latest dateId and its human-readable label.
- */
-async function getLatestDateId() {
-  for (const pageUrl of RANKING_PAGE_URLS) {
+// ---------------------------------------------------------------------------
+// Strategy 1: No dateId param
+// ---------------------------------------------------------------------------
+async function tryWithoutDateId() {
+  console.log('\n[Strategy 1] API call without dateId...');
+  return tryFetchJson(`${FIFA_API_BASE}?locale=en`);
+}
+
+// ---------------------------------------------------------------------------
+// Strategy 2: Probe recent numeric dateIds (counts down from known ceiling)
+// ---------------------------------------------------------------------------
+async function tryProbeRecentIds() {
+  console.log('\n[Strategy 2] Probing recent numeric dateIds...');
+  const PROBE_START    = 14350;
+  const PROBE_ATTEMPTS = 50;
+  for (let i = PROBE_START; i > PROBE_START - PROBE_ATTEMPTS; i--) {
+    const data = await tryFetchJson(`${FIFA_API_BASE}?locale=en&dateId=id${i}`);
+    if (data) {
+      console.log(`  → Found valid data at id${i}`);
+      return data;
+    }
+  }
+  return null;
+}
+
+// ---------------------------------------------------------------------------
+// Strategy 3: Scrape __NEXT_DATA__ from the HTML page for the exact dateId
+// ---------------------------------------------------------------------------
+async function tryScrapeHtmlPage() {
+  const PAGES = [
+    'https://inside.fifa.com/fifa-world-ranking/men',
+    'https://www.fifa.com/fifa-world-ranking/men',
+  ];
+
+  console.log('\n[Strategy 3] Scraping __NEXT_DATA__ from HTML page...');
+  for (const pageUrl of PAGES) {
     try {
-      console.log(`Trying ranking page: ${pageUrl}`);
-      const res = await safeFetch(pageUrl);
+      console.log(`  GET ${pageUrl}`);
+      const res = await fetch(pageUrl, { headers: HTML_HEADERS });
+      if (!res.ok) { console.warn(`  → HTTP ${res.status}`); continue; }
+
       const html = await res.text();
+      if (!html.includes('__NEXT_DATA__')) {
+        const snippet = html.slice(0, 400).replace(/\s+/g, ' ');
+        console.warn(`  → __NEXT_DATA__ not found. Page preview: ${snippet}`);
+        continue;
+      }
 
       const match = html.match(
         /<script[^>]+id="__NEXT_DATA__"[^>]*>([\s\S]+?)<\/script>/
       );
-      if (!match) {
-        console.warn(`  __NEXT_DATA__ not found on ${pageUrl}, trying next...`);
-        continue;
-      }
+      if (!match) { console.warn(`  → Could not extract __NEXT_DATA__ tag`); continue; }
 
       const nextData = JSON.parse(match[1]);
-      const dates =
-        nextData?.props?.pageProps?.pageData?.ranking?.dates;
-
+      const dates = nextData?.props?.pageProps?.pageData?.ranking?.dates;
       if (!Array.isArray(dates) || dates.length === 0) {
-        console.warn(`  dates array missing/empty on ${pageUrl}, trying next...`);
+        console.warn(
+          `  → dates array missing. pageData keys: ${Object.keys(nextData?.props?.pageProps?.pageData ?? {}).join(', ')}`
+        );
         continue;
       }
 
       const latest = dates[0];
-      console.log(
-        `  Found ${dates.length} ranking dates. Latest: ${latest.text} (${latest.id})`
-      );
-      return { dateId: latest.id, dateText: latest.text };
+      console.log(`  → dateId: ${latest.id}  (${latest.text})`);
+
+      const data = await tryFetchJson(`${FIFA_API_BASE}?locale=en&dateId=${latest.id}`);
+      if (data) {
+        data._dateText = latest.text;
+        return data;
+      }
     } catch (err) {
-      console.warn(`  Failed on ${pageUrl}: ${err.message}`);
+      console.warn(`  → Error on ${pageUrl}: ${err.message}`);
     }
   }
-
-  throw new Error(
-    'Could not retrieve a valid dateId from any FIFA ranking page. ' +
-      'FIFA may have changed their page structure.'
-  );
+  return null;
 }
 
-async function fetchRankings(dateId) {
-  const url = `${FIFA_API_BASE}?locale=en&dateId=${dateId}`;
-  console.log(`Fetching rankings API: ${url}`);
-
-  const res = await safeFetch(url, {
-    headers: {
-      ...HEADERS,
-      Accept: 'application/json, text/plain, */*',
-    },
-  });
-
-  const data = await res.json();
-
-  if (!Array.isArray(data?.rankings)) {
-    throw new Error(
-      `Unexpected API response — missing "rankings" array. ` +
-        `Keys found: ${Object.keys(data ?? {}).join(', ')}`
-    );
-  }
-
-  return data.rankings;
-}
-
+// ---------------------------------------------------------------------------
+// Main
+// ---------------------------------------------------------------------------
 async function main() {
   console.log('=== FIFA Rankings Fetcher ===');
+  console.log(`Node ${process.version}  |  ${new Date().toISOString()}\n`);
 
-  const { dateId, dateText } = await getLatestDateId();
-  const rawRankings = await fetchRankings(dateId);
+  const data =
+    (await tryWithoutDateId()) ??
+    (await tryProbeRecentIds()) ??
+    (await tryScrapeHtmlPage());
 
-  if (rawRankings.length < 50) {
+  if (!data) {
     throw new Error(
-      `Suspiciously few rankings returned (${rawRankings.length}). ` +
-        'Refusing to overwrite existing data.'
+      'All strategies exhausted — could not fetch FIFA rankings. ' +
+        'Review the log output above for specific errors per strategy.'
     );
   }
 
-  const rankings = rawRankings.map((r) => ({
-    rank: r.rankingItem.rank,
-    name: r.rankingItem.name,
-    points: r.rankingItem.totalPoints,
+  const dateText =
+    data._dateText ??
+    data.rankings[0]?.rankingItem?.date ??
+    'Unknown date';
+
+  const rankings = data.rankings.map((r) => ({
+    rank:          r.rankingItem.rank,
+    name:          r.rankingItem.name,
+    points:        r.rankingItem.totalPoints,
     confederation: r.tag?.text ?? '',
-    flagUrl: r.rankingItem.flag?.src ?? '',
+    flagUrl:       r.rankingItem.flag?.src ?? '',
   }));
 
+  // ── Diagnostic: check WC2026 name coverage ─────────────────────────────────
+  const apiNameSet = new Set(rankings.map((r) => r.name.toLowerCase().trim()));
+  const unmatched  = WC2026_TEAMS.filter((t) => !apiNameSet.has(t.toLowerCase()));
+
+  console.log(
+    `\n=== WC2026 Name Coverage: ${WC2026_TEAMS.length - unmatched.length}/${WC2026_TEAMS.length} matched ===`
+  );
+  if (unmatched.length > 0) {
+    console.warn(
+      `\n⚠ These WC2026 display names are NOT in the API — add them to ALIASES in index.html:`
+    );
+    unmatched.forEach((t) => console.warn(`  - "${t}"`));
+  }
+
+  console.log('\nAll team names returned by the FIFA API (sorted):');
+  [...rankings]
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .forEach((r) => console.log(`  ${String(r.rank).padStart(3)}.  ${r.name}`));
+
+  // ── Write output ───────────────────────────────────────────────────────────
   const output = {
     updatedAt: dateText,
     fetchedAt: new Date().toISOString(),
@@ -132,8 +216,14 @@ async function main() {
   await mkdir(dirname(OUTPUT_PATH), { recursive: true });
   await writeFile(OUTPUT_PATH, JSON.stringify(output, null, 2), 'utf8');
 
-  console.log(`\n✓ Wrote ${rankings.length} team rankings to data/rankings.json`);
+  console.log(`\n✓ Wrote ${rankings.length} teams to data/rankings.json`);
   console.log(`  Rankings date: ${dateText}`);
+
+  if (unmatched.length > 0) {
+    console.warn(
+      `\n⚠ ${unmatched.length} WC2026 team(s) will show as unranked until ALIASES are updated.`
+    );
+  }
 }
 
 main().catch((err) => {
