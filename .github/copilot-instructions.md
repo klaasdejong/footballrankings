@@ -37,6 +37,7 @@ When making changes:
 - Prefer robust parsing/fallback logic in `scripts/fetch-rankings.mjs` over introducing services.
 - Keep `index.html` resilient to missing teams via alias mapping and graceful UI fallbacks.
 - Validate that both local and Actions runs can regenerate `data/rankings.json`.
+- For knockout visualization, prefer a spider-style bracket where the Final is centered and later-round branches progress inward from both left and right sides.
 
 ## What Not To Add Without Approval
 

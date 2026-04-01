@@ -1,0 +1,1751 @@
+{
+  "tournament": "2026 FIFA World Cup",
+  "source": {
+    "provider": "Wikipedia",
+    "page": "2026_FIFA_World_Cup",
+    "fetchedAt": "2026-04-01T20:06:41.254Z",
+    "reliability": "medium",
+    "notes": "Schedule placeholders from Wikipedia may change before kickoff."
+  },
+  "matchCount": 79,
+  "matches": [
+    {
+      "id": "group-a-001",
+      "matchNumber": 1,
+      "stage": "Group Stage",
+      "round": "Group A",
+      "group": "A",
+      "date": "2026-06-11",
+      "localTime": "1:00 p.m. UTC−6",
+      "homeTeam": "Mexico",
+      "awayTeam": "South Africa",
+      "venue": {
+        "name": "Estadio Azteca",
+        "city": "Mexico City"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_A",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-a-002",
+      "matchNumber": 2,
+      "stage": "Group Stage",
+      "round": "Group A",
+      "group": "A",
+      "date": "2026-06-11",
+      "localTime": "8:00 p.m. UTC−6",
+      "homeTeam": "South Korea",
+      "awayTeam": "Czech Republic",
+      "venue": {
+        "name": "Estadio Akron",
+        "city": "Zapopan"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_A",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-a-025",
+      "matchNumber": 25,
+      "stage": "Group Stage",
+      "round": "Group A",
+      "group": "A",
+      "date": "2026-06-18",
+      "localTime": "12:00 p.m. UTC−4",
+      "homeTeam": "Czech Republic",
+      "awayTeam": "South Africa",
+      "venue": {
+        "name": "Mercedes-Benz Stadium",
+        "city": "Atlanta"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_A",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-a-028",
+      "matchNumber": 28,
+      "stage": "Group Stage",
+      "round": "Group A",
+      "group": "A",
+      "date": "2026-06-18",
+      "localTime": "7:00 p.m. UTC−6",
+      "homeTeam": "Mexico",
+      "awayTeam": "South Korea",
+      "venue": {
+        "name": "Estadio Akron",
+        "city": "Zapopan"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_A",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-a-053",
+      "matchNumber": 53,
+      "stage": "Group Stage",
+      "round": "Group A",
+      "group": "A",
+      "date": "2026-06-24",
+      "localTime": "7:00 p.m. UTC−6",
+      "homeTeam": "Czech Republic",
+      "awayTeam": "Mexico",
+      "venue": {
+        "name": "Estadio Azteca",
+        "city": "Mexico City"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_A",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-a-054",
+      "matchNumber": 54,
+      "stage": "Group Stage",
+      "round": "Group A",
+      "group": "A",
+      "date": "2026-06-24",
+      "localTime": "7:00 p.m. UTC−6",
+      "homeTeam": "South Africa",
+      "awayTeam": "South Korea",
+      "venue": {
+        "name": "Estadio BBVA",
+        "city": "Guadalupe"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_A",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-b-003",
+      "matchNumber": 3,
+      "stage": "Group Stage",
+      "round": "Group B",
+      "group": "B",
+      "date": "2026-06-12",
+      "localTime": "3:00 p.m. UTC−4",
+      "homeTeam": "Canada",
+      "awayTeam": "Bosnia and Herzegovina",
+      "venue": {
+        "name": "BMO Field",
+        "city": "Toronto"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_B",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-b-008",
+      "matchNumber": 8,
+      "stage": "Group Stage",
+      "round": "Group B",
+      "group": "B",
+      "date": "2026-06-13",
+      "localTime": "12:00 p.m. UTC−7",
+      "homeTeam": "Qatar",
+      "awayTeam": "Switzerland",
+      "venue": {
+        "name": "Levi's Stadium",
+        "city": "Santa Clara"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_B",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-b-026",
+      "matchNumber": 26,
+      "stage": "Group Stage",
+      "round": "Group B",
+      "group": "B",
+      "date": "2026-06-18",
+      "localTime": "12:00 p.m. UTC−7",
+      "homeTeam": "Switzerland",
+      "awayTeam": "Bosnia and Herzegovina",
+      "venue": {
+        "name": "SoFi Stadium",
+        "city": "Inglewood"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_B",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-b-027",
+      "matchNumber": 27,
+      "stage": "Group Stage",
+      "round": "Group B",
+      "group": "B",
+      "date": "2026-06-18",
+      "localTime": "3:00 p.m. UTC−7",
+      "homeTeam": "Canada",
+      "awayTeam": "Qatar",
+      "venue": {
+        "name": "BC Place",
+        "city": "Vancouver"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_B",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-b-051",
+      "matchNumber": 51,
+      "stage": "Group Stage",
+      "round": "Group B",
+      "group": "B",
+      "date": "2026-06-24",
+      "localTime": "12:00 p.m. UTC−7",
+      "homeTeam": "Switzerland",
+      "awayTeam": "Canada",
+      "venue": {
+        "name": "BC Place",
+        "city": "Vancouver"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_B",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-b-052",
+      "matchNumber": 52,
+      "stage": "Group Stage",
+      "round": "Group B",
+      "group": "B",
+      "date": "2026-06-24",
+      "localTime": "12:00 p.m. UTC−7",
+      "homeTeam": "Bosnia and Herzegovina",
+      "awayTeam": "Qatar",
+      "venue": {
+        "name": "Lumen Field",
+        "city": "Seattle"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_B",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-c-007",
+      "matchNumber": 7,
+      "stage": "Group Stage",
+      "round": "Group C",
+      "group": "C",
+      "date": "2026-06-13",
+      "localTime": "6:00 p.m. UTC−4",
+      "homeTeam": "Brazil",
+      "awayTeam": "Morocco",
+      "venue": {
+        "name": "MetLife Stadium",
+        "city": "East Rutherford"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_C",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-c-005",
+      "matchNumber": 5,
+      "stage": "Group Stage",
+      "round": "Group C",
+      "group": "C",
+      "date": "2026-06-13",
+      "localTime": "9:00 p.m. UTC−4",
+      "homeTeam": "Haiti",
+      "awayTeam": "Scotland",
+      "venue": {
+        "name": "Gillette Stadium",
+        "city": "Foxborough"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_C",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-c-030",
+      "matchNumber": 30,
+      "stage": "Group Stage",
+      "round": "Group C",
+      "group": "C",
+      "date": "2026-06-19",
+      "localTime": "6:00 p.m. UTC−4",
+      "homeTeam": "Scotland",
+      "awayTeam": "Morocco",
+      "venue": {
+        "name": "Gillette Stadium",
+        "city": "Foxborough"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_C",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-c-029",
+      "matchNumber": 29,
+      "stage": "Group Stage",
+      "round": "Group C",
+      "group": "C",
+      "date": "2026-06-19",
+      "localTime": "8:30 p.m. UTC−4",
+      "homeTeam": "Brazil",
+      "awayTeam": "Haiti",
+      "venue": {
+        "name": "Lincoln Financial Field",
+        "city": "Philadelphia"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_C",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-c-049",
+      "matchNumber": 49,
+      "stage": "Group Stage",
+      "round": "Group C",
+      "group": "C",
+      "date": "2026-06-24",
+      "localTime": "6:00 p.m. UTC−4",
+      "homeTeam": "Scotland",
+      "awayTeam": "Brazil",
+      "venue": {
+        "name": "Hard Rock Stadium",
+        "city": "Miami Gardens"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_C",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-c-050",
+      "matchNumber": 50,
+      "stage": "Group Stage",
+      "round": "Group C",
+      "group": "C",
+      "date": "2026-06-24",
+      "localTime": "6:00 p.m. UTC−4",
+      "homeTeam": "Morocco",
+      "awayTeam": "Haiti",
+      "venue": {
+        "name": "Mercedes-Benz Stadium",
+        "city": "Atlanta"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_C",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-d-004",
+      "matchNumber": 4,
+      "stage": "Group Stage",
+      "round": "Group D",
+      "group": "D",
+      "date": "2026-06-12",
+      "localTime": "6:00 p.m. UTC−7",
+      "homeTeam": "United States",
+      "awayTeam": "Paraguay",
+      "venue": {
+        "name": "SoFi Stadium",
+        "city": "Inglewood"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_D",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-d-006",
+      "matchNumber": 6,
+      "stage": "Group Stage",
+      "round": "Group D",
+      "group": "D",
+      "date": "2026-06-13",
+      "localTime": "9:00 p.m. UTC−7",
+      "homeTeam": "Australia",
+      "awayTeam": "Turkey",
+      "venue": {
+        "name": "BC Place",
+        "city": "Vancouver"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_D",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-d-032",
+      "matchNumber": 32,
+      "stage": "Group Stage",
+      "round": "Group D",
+      "group": "D",
+      "date": "2026-06-19",
+      "localTime": "12:00 p.m. UTC−7",
+      "homeTeam": "United States",
+      "awayTeam": "Australia",
+      "venue": {
+        "name": "Lumen Field",
+        "city": "Seattle"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_D",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-d-031",
+      "matchNumber": 31,
+      "stage": "Group Stage",
+      "round": "Group D",
+      "group": "D",
+      "date": "2026-06-19",
+      "localTime": "8:00 p.m. UTC−7",
+      "homeTeam": "Turkey",
+      "awayTeam": "Paraguay",
+      "venue": {
+        "name": "Levi's Stadium",
+        "city": "Santa Clara"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_D",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-d-059",
+      "matchNumber": 59,
+      "stage": "Group Stage",
+      "round": "Group D",
+      "group": "D",
+      "date": "2026-06-25",
+      "localTime": "7:00 p.m. UTC−7",
+      "homeTeam": "Turkey",
+      "awayTeam": "United States",
+      "venue": {
+        "name": "SoFi Stadium",
+        "city": "Inglewood"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_D",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-d-060",
+      "matchNumber": 60,
+      "stage": "Group Stage",
+      "round": "Group D",
+      "group": "D",
+      "date": "2026-06-25",
+      "localTime": "7:00 p.m. UTC−7",
+      "homeTeam": "Paraguay",
+      "awayTeam": "Australia",
+      "venue": {
+        "name": "Levi's Stadium",
+        "city": "Santa Clara"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_D",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-e-010",
+      "matchNumber": 10,
+      "stage": "Group Stage",
+      "round": "Group E",
+      "group": "E",
+      "date": "2026-06-14",
+      "localTime": "12:00 p.m. UTC−5",
+      "homeTeam": "Germany",
+      "awayTeam": "Curaçao",
+      "venue": {
+        "name": "NRG Stadium",
+        "city": "Houston"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_E",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-e-009",
+      "matchNumber": 9,
+      "stage": "Group Stage",
+      "round": "Group E",
+      "group": "E",
+      "date": "2026-06-14",
+      "localTime": "7:00 p.m. UTC−4",
+      "homeTeam": "Ivory Coast",
+      "awayTeam": "Ecuador",
+      "venue": {
+        "name": "Lincoln Financial Field",
+        "city": "Philadelphia"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_E",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-e-033",
+      "matchNumber": 33,
+      "stage": "Group Stage",
+      "round": "Group E",
+      "group": "E",
+      "date": "2026-06-20",
+      "localTime": "4:00 p.m. UTC−4",
+      "homeTeam": "Germany",
+      "awayTeam": "Ivory Coast",
+      "venue": {
+        "name": "BMO Field",
+        "city": "Toronto"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_E",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-e-034",
+      "matchNumber": 34,
+      "stage": "Group Stage",
+      "round": "Group E",
+      "group": "E",
+      "date": "2026-06-20",
+      "localTime": "7:00 p.m. UTC−5",
+      "homeTeam": "Ecuador",
+      "awayTeam": "Curaçao",
+      "venue": {
+        "name": "Arrowhead Stadium",
+        "city": "Kansas City"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_E",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-e-055",
+      "matchNumber": 55,
+      "stage": "Group Stage",
+      "round": "Group E",
+      "group": "E",
+      "date": "2026-06-25",
+      "localTime": "4:00 p.m. UTC−4",
+      "homeTeam": "Curaçao",
+      "awayTeam": "Ivory Coast",
+      "venue": {
+        "name": "Lincoln Financial Field",
+        "city": "Philadelphia"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_E",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-e-056",
+      "matchNumber": 56,
+      "stage": "Group Stage",
+      "round": "Group E",
+      "group": "E",
+      "date": "2026-06-25",
+      "localTime": "4:00 p.m. UTC−4",
+      "homeTeam": "Ecuador",
+      "awayTeam": "Germany",
+      "venue": {
+        "name": "MetLife Stadium",
+        "city": "East Rutherford"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_E",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-f-011",
+      "matchNumber": 11,
+      "stage": "Group Stage",
+      "round": "Group F",
+      "group": "F",
+      "date": "2026-06-14",
+      "localTime": "3:00 p.m. UTC−5",
+      "homeTeam": "Netherlands",
+      "awayTeam": "Japan",
+      "venue": {
+        "name": "AT&T Stadium",
+        "city": "Arlington"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_F",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-f-012",
+      "matchNumber": 12,
+      "stage": "Group Stage",
+      "round": "Group F",
+      "group": "F",
+      "date": "2026-06-14",
+      "localTime": "8:00 p.m. UTC−6",
+      "homeTeam": "Sweden",
+      "awayTeam": "Tunisia",
+      "venue": {
+        "name": "Estadio BBVA",
+        "city": "Guadalupe"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_F",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-f-035",
+      "matchNumber": 35,
+      "stage": "Group Stage",
+      "round": "Group F",
+      "group": "F",
+      "date": "2026-06-20",
+      "localTime": "12:00 p.m. UTC−5",
+      "homeTeam": "Netherlands",
+      "awayTeam": "Sweden",
+      "venue": {
+        "name": "NRG Stadium",
+        "city": "Houston"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_F",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-f-036",
+      "matchNumber": 36,
+      "stage": "Group Stage",
+      "round": "Group F",
+      "group": "F",
+      "date": "2026-06-20",
+      "localTime": "10:00 p.m. UTC−6",
+      "homeTeam": "Tunisia",
+      "awayTeam": "Japan",
+      "venue": {
+        "name": "Estadio BBVA",
+        "city": "Guadalupe"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_F",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-f-057",
+      "matchNumber": 57,
+      "stage": "Group Stage",
+      "round": "Group F",
+      "group": "F",
+      "date": "2026-06-25",
+      "localTime": "6:00 p.m. UTC−5",
+      "homeTeam": "Japan",
+      "awayTeam": "Sweden",
+      "venue": {
+        "name": "AT&T Stadium",
+        "city": "Arlington"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_F",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-f-058",
+      "matchNumber": 58,
+      "stage": "Group Stage",
+      "round": "Group F",
+      "group": "F",
+      "date": "2026-06-25",
+      "localTime": "6:00 p.m. UTC−5",
+      "homeTeam": "Tunisia",
+      "awayTeam": "Netherlands",
+      "venue": {
+        "name": "Arrowhead Stadium",
+        "city": "Kansas City"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_F",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-g-016",
+      "matchNumber": 16,
+      "stage": "Group Stage",
+      "round": "Group G",
+      "group": "G",
+      "date": "2026-06-15",
+      "localTime": "12:00 p.m. UTC−7",
+      "homeTeam": "Belgium",
+      "awayTeam": "Egypt",
+      "venue": {
+        "name": "Lumen Field",
+        "city": "Seattle"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_G",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-g-015",
+      "matchNumber": 15,
+      "stage": "Group Stage",
+      "round": "Group G",
+      "group": "G",
+      "date": "2026-06-15",
+      "localTime": "6:00 p.m. UTC−7",
+      "homeTeam": "Iran",
+      "awayTeam": "New Zealand",
+      "venue": {
+        "name": "SoFi Stadium",
+        "city": "Inglewood"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_G",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-g-039",
+      "matchNumber": 39,
+      "stage": "Group Stage",
+      "round": "Group G",
+      "group": "G",
+      "date": "2026-06-21",
+      "localTime": "12:00 p.m. UTC−7",
+      "homeTeam": "Belgium",
+      "awayTeam": "Iran",
+      "venue": {
+        "name": "SoFi Stadium",
+        "city": "Inglewood"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_G",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-g-040",
+      "matchNumber": 40,
+      "stage": "Group Stage",
+      "round": "Group G",
+      "group": "G",
+      "date": "2026-06-21",
+      "localTime": "6:00 p.m. UTC−7",
+      "homeTeam": "New Zealand",
+      "awayTeam": "Egypt",
+      "venue": {
+        "name": "BC Place",
+        "city": "Vancouver"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_G",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-g-063",
+      "matchNumber": 63,
+      "stage": "Group Stage",
+      "round": "Group G",
+      "group": "G",
+      "date": "2026-06-26",
+      "localTime": "8:00 p.m. UTC−7",
+      "homeTeam": "Egypt",
+      "awayTeam": "Iran",
+      "venue": {
+        "name": "Lumen Field",
+        "city": "Seattle"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_G",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-g-064",
+      "matchNumber": 64,
+      "stage": "Group Stage",
+      "round": "Group G",
+      "group": "G",
+      "date": "2026-06-26",
+      "localTime": "8:00 p.m. UTC−7",
+      "homeTeam": "New Zealand",
+      "awayTeam": "Belgium",
+      "venue": {
+        "name": "BC Place",
+        "city": "Vancouver"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_G",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-h-014",
+      "matchNumber": 14,
+      "stage": "Group Stage",
+      "round": "Group H",
+      "group": "H",
+      "date": "2026-06-15",
+      "localTime": "12:00 p.m. UTC−4",
+      "homeTeam": "Spain",
+      "awayTeam": "Cape Verde",
+      "venue": {
+        "name": "Mercedes-Benz Stadium",
+        "city": "Atlanta"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_H",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-h-013",
+      "matchNumber": 13,
+      "stage": "Group Stage",
+      "round": "Group H",
+      "group": "H",
+      "date": "2026-06-15",
+      "localTime": "6:00 p.m. UTC−4",
+      "homeTeam": "Saudi Arabia",
+      "awayTeam": "Uruguay",
+      "venue": {
+        "name": "Hard Rock Stadium",
+        "city": "Miami Gardens"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_H",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-h-038",
+      "matchNumber": 38,
+      "stage": "Group Stage",
+      "round": "Group H",
+      "group": "H",
+      "date": "2026-06-21",
+      "localTime": "12:00 p.m. UTC−4",
+      "homeTeam": "Spain",
+      "awayTeam": "Saudi Arabia",
+      "venue": {
+        "name": "Mercedes-Benz Stadium",
+        "city": "Atlanta"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_H",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-h-037",
+      "matchNumber": 37,
+      "stage": "Group Stage",
+      "round": "Group H",
+      "group": "H",
+      "date": "2026-06-21",
+      "localTime": "6:00 p.m. UTC−4",
+      "homeTeam": "Uruguay",
+      "awayTeam": "Cape Verde",
+      "venue": {
+        "name": "Hard Rock Stadium",
+        "city": "Miami Gardens"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_H",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-h-065",
+      "matchNumber": 65,
+      "stage": "Group Stage",
+      "round": "Group H",
+      "group": "H",
+      "date": "2026-06-26",
+      "localTime": "7:00 p.m. UTC−5",
+      "homeTeam": "Cape Verde",
+      "awayTeam": "Saudi Arabia",
+      "venue": {
+        "name": "NRG Stadium",
+        "city": "Houston"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_H",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "group-h-066",
+      "matchNumber": 66,
+      "stage": "Group Stage",
+      "round": "Group H",
+      "group": "H",
+      "date": "2026-06-26",
+      "localTime": "6:00 p.m. UTC−6",
+      "homeTeam": "Uruguay",
+      "awayTeam": "Spain",
+      "venue": {
+        "name": "Estadio Akron",
+        "city": "Zapopan"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Group_H",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "round-of-32-073",
+      "matchNumber": 73,
+      "stage": "Knockout Stage",
+      "round": "Round of 32",
+      "group": null,
+      "date": "2026-06-28",
+      "localTime": "12:00 p.m. UTC−7",
+      "homeTeam": "Runner-up Group A",
+      "awayTeam": "Runner-up Group B",
+      "venue": {
+        "name": "SoFi Stadium",
+        "city": "Inglewood"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Round_of_32",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "round-of-32-076",
+      "matchNumber": 76,
+      "stage": "Knockout Stage",
+      "round": "Round of 32",
+      "group": null,
+      "date": "2026-06-29",
+      "localTime": "12:00 p.m. UTC−5",
+      "homeTeam": "Winner Group C",
+      "awayTeam": "Runner-up Group F",
+      "venue": {
+        "name": "NRG Stadium",
+        "city": "Houston"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Round_of_32",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "round-of-32-074",
+      "matchNumber": 74,
+      "stage": "Knockout Stage",
+      "round": "Round of 32",
+      "group": null,
+      "date": "2026-06-29",
+      "localTime": "4:30 p.m. UTC−4",
+      "homeTeam": "Winner Group E",
+      "awayTeam": "3rd Group A/B/C/D/F",
+      "venue": {
+        "name": "Gillette Stadium",
+        "city": "Foxborough"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Round_of_32",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "round-of-32-075",
+      "matchNumber": 75,
+      "stage": "Knockout Stage",
+      "round": "Round of 32",
+      "group": null,
+      "date": "2026-06-29",
+      "localTime": "7:00 p.m. UTC−6",
+      "homeTeam": "Winner Group F",
+      "awayTeam": "Runner-up Group C",
+      "venue": {
+        "name": "Estadio BBVA",
+        "city": "Guadalupe"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Round_of_32",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "round-of-32-078",
+      "matchNumber": 78,
+      "stage": "Knockout Stage",
+      "round": "Round of 32",
+      "group": null,
+      "date": "2026-06-30",
+      "localTime": "12:00 p.m. UTC−5",
+      "homeTeam": "Runner-up Group E",
+      "awayTeam": "Runner-up Group I",
+      "venue": {
+        "name": "AT&T Stadium",
+        "city": "Arlington"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Round_of_32",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "round-of-32-077",
+      "matchNumber": 77,
+      "stage": "Knockout Stage",
+      "round": "Round of 32",
+      "group": null,
+      "date": "2026-06-30",
+      "localTime": "5:00 p.m. UTC−4",
+      "homeTeam": "Winner Group I",
+      "awayTeam": "3rd Group C/D/F/G/H",
+      "venue": {
+        "name": "MetLife Stadium",
+        "city": "East Rutherford"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Round_of_32",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "round-of-32-079",
+      "matchNumber": 79,
+      "stage": "Knockout Stage",
+      "round": "Round of 32",
+      "group": null,
+      "date": "2026-06-30",
+      "localTime": "7:00 p.m. UTC−6",
+      "homeTeam": "Winner Group A",
+      "awayTeam": "3rd Group C/E/F/H/I",
+      "venue": {
+        "name": "Estadio Azteca",
+        "city": "Mexico City"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Round_of_32",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "round-of-32-080",
+      "matchNumber": 80,
+      "stage": "Knockout Stage",
+      "round": "Round of 32",
+      "group": null,
+      "date": "2026-07-01",
+      "localTime": "12:00 p.m. UTC−4",
+      "homeTeam": "Winner Group L",
+      "awayTeam": "3rd Group E/H/I/J/K",
+      "venue": {
+        "name": "Mercedes-Benz Stadium",
+        "city": "Atlanta"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Round_of_32",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "round-of-32-082",
+      "matchNumber": 82,
+      "stage": "Knockout Stage",
+      "round": "Round of 32",
+      "group": null,
+      "date": "2026-07-01",
+      "localTime": "1:00 p.m. UTC−7",
+      "homeTeam": "Winner Group G",
+      "awayTeam": "3rd Group A/E/H/I/J",
+      "venue": {
+        "name": "Lumen Field",
+        "city": "Seattle"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Round_of_32",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "round-of-32-081",
+      "matchNumber": 81,
+      "stage": "Knockout Stage",
+      "round": "Round of 32",
+      "group": null,
+      "date": "2026-07-01",
+      "localTime": "5:00 p.m. UTC−7",
+      "homeTeam": "Winner Group D",
+      "awayTeam": "3rd Group B/E/F/I/J",
+      "venue": {
+        "name": "Levi's Stadium",
+        "city": "Santa Clara"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Round_of_32",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "round-of-32-084",
+      "matchNumber": 84,
+      "stage": "Knockout Stage",
+      "round": "Round of 32",
+      "group": null,
+      "date": "2026-07-02",
+      "localTime": "12:00 p.m. UTC−7",
+      "homeTeam": "Winner Group H",
+      "awayTeam": "Runner-up Group J",
+      "venue": {
+        "name": "SoFi Stadium",
+        "city": "Inglewood"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Round_of_32",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "round-of-32-083",
+      "matchNumber": 83,
+      "stage": "Knockout Stage",
+      "round": "Round of 32",
+      "group": null,
+      "date": "2026-07-02",
+      "localTime": "7:00 p.m. UTC−4",
+      "homeTeam": "Runner-up Group K",
+      "awayTeam": "Runner-up Group L",
+      "venue": {
+        "name": "BMO Field",
+        "city": "Toronto"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Round_of_32",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "round-of-32-085",
+      "matchNumber": 85,
+      "stage": "Knockout Stage",
+      "round": "Round of 32",
+      "group": null,
+      "date": "2026-07-02",
+      "localTime": "8:00 p.m. UTC−7",
+      "homeTeam": "Winner Group B",
+      "awayTeam": "3rd Group E/F/G/I/J",
+      "venue": {
+        "name": "BC Place",
+        "city": "Vancouver"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Round_of_32",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "round-of-32-088",
+      "matchNumber": 88,
+      "stage": "Knockout Stage",
+      "round": "Round of 32",
+      "group": null,
+      "date": "2026-07-03",
+      "localTime": "1:00 p.m. UTC−5",
+      "homeTeam": "Runner-up Group D",
+      "awayTeam": "Runner-up Group G",
+      "venue": {
+        "name": "AT&T Stadium",
+        "city": "Arlington"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Round_of_32",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "round-of-32-086",
+      "matchNumber": 86,
+      "stage": "Knockout Stage",
+      "round": "Round of 32",
+      "group": null,
+      "date": "2026-07-03",
+      "localTime": "6:00 p.m. UTC−4",
+      "homeTeam": "Winner Group J",
+      "awayTeam": "Runner-up Group H",
+      "venue": {
+        "name": "Hard Rock Stadium",
+        "city": "Miami Gardens"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Round_of_32",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "round-of-32-087",
+      "matchNumber": 87,
+      "stage": "Knockout Stage",
+      "round": "Round of 32",
+      "group": null,
+      "date": "2026-07-03",
+      "localTime": "8:30 p.m. UTC−5",
+      "homeTeam": "Winner Group K",
+      "awayTeam": "3rd Group D/E/I/J/L",
+      "venue": {
+        "name": "Arrowhead Stadium",
+        "city": "Kansas City"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Round_of_32",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "round-of-16-090",
+      "matchNumber": 90,
+      "stage": "Knockout Stage",
+      "round": "Round of 16",
+      "group": null,
+      "date": "2026-07-04",
+      "localTime": "12:00 p.m. UTC−5",
+      "homeTeam": "Winner Match 73",
+      "awayTeam": "Winner Match 75",
+      "venue": {
+        "name": "NRG Stadium",
+        "city": "Houston"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Round_of_16",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "round-of-16-089",
+      "matchNumber": 89,
+      "stage": "Knockout Stage",
+      "round": "Round of 16",
+      "group": null,
+      "date": "2026-07-04",
+      "localTime": "5:00 p.m. UTC−4",
+      "homeTeam": "Winner Match 74",
+      "awayTeam": "Winner Match 77",
+      "venue": {
+        "name": "Lincoln Financial Field",
+        "city": "Philadelphia"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Round_of_16",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "round-of-16-091",
+      "matchNumber": 91,
+      "stage": "Knockout Stage",
+      "round": "Round of 16",
+      "group": null,
+      "date": "2026-07-05",
+      "localTime": "4:00 p.m. UTC−4",
+      "homeTeam": "Winner Match 76",
+      "awayTeam": "Winner Match 78",
+      "venue": {
+        "name": "MetLife Stadium",
+        "city": "East Rutherford"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Round_of_16",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "round-of-16-092",
+      "matchNumber": 92,
+      "stage": "Knockout Stage",
+      "round": "Round of 16",
+      "group": null,
+      "date": "2026-07-05",
+      "localTime": "6:00 p.m. UTC−6",
+      "homeTeam": "Winner Match 79",
+      "awayTeam": "Winner Match 80",
+      "venue": {
+        "name": "Estadio Azteca",
+        "city": "Mexico City"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Round_of_16",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "round-of-16-093",
+      "matchNumber": 93,
+      "stage": "Knockout Stage",
+      "round": "Round of 16",
+      "group": null,
+      "date": "2026-07-06",
+      "localTime": "2:00 p.m. UTC−5",
+      "homeTeam": "Winner Match 83",
+      "awayTeam": "Winner Match 84",
+      "venue": {
+        "name": "AT&T Stadium",
+        "city": "Arlington"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Round_of_16",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "round-of-16-094",
+      "matchNumber": 94,
+      "stage": "Knockout Stage",
+      "round": "Round of 16",
+      "group": null,
+      "date": "2026-07-06",
+      "localTime": "5:00 p.m. UTC−7",
+      "homeTeam": "Winner Match 81",
+      "awayTeam": "Winner Match 82",
+      "venue": {
+        "name": "Lumen Field",
+        "city": "Seattle"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Round_of_16",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "round-of-16-095",
+      "matchNumber": 95,
+      "stage": "Knockout Stage",
+      "round": "Round of 16",
+      "group": null,
+      "date": "2026-07-07",
+      "localTime": "12:00 p.m. UTC−4",
+      "homeTeam": "Winner Match 86",
+      "awayTeam": "Winner Match 88",
+      "venue": {
+        "name": "Mercedes-Benz Stadium",
+        "city": "Atlanta"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Round_of_16",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "round-of-16-096",
+      "matchNumber": 96,
+      "stage": "Knockout Stage",
+      "round": "Round of 16",
+      "group": null,
+      "date": "2026-07-07",
+      "localTime": "1:00 p.m. UTC−7",
+      "homeTeam": "Winner Match 85",
+      "awayTeam": "Winner Match 87",
+      "venue": {
+        "name": "BC Place",
+        "city": "Vancouver"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Round_of_16",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "quarterfinals-097",
+      "matchNumber": 97,
+      "stage": "Knockout Stage",
+      "round": "Quarterfinals",
+      "group": null,
+      "date": "2026-07-09",
+      "localTime": "4:00 p.m. UTC−4",
+      "homeTeam": "Winner Match 89",
+      "awayTeam": "Winner Match 90",
+      "venue": {
+        "name": "Gillette Stadium",
+        "city": "Foxborough"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Quarterfinals",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "quarterfinals-098",
+      "matchNumber": 98,
+      "stage": "Knockout Stage",
+      "round": "Quarterfinals",
+      "group": null,
+      "date": "2026-07-10",
+      "localTime": "12:00 p.m. UTC−7",
+      "homeTeam": "Winner Match 93",
+      "awayTeam": "Winner Match 94",
+      "venue": {
+        "name": "SoFi Stadium",
+        "city": "Inglewood"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Quarterfinals",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "quarterfinals-099",
+      "matchNumber": 99,
+      "stage": "Knockout Stage",
+      "round": "Quarterfinals",
+      "group": null,
+      "date": "2026-07-11",
+      "localTime": "5:00 p.m. UTC−4",
+      "homeTeam": "Winner Match 91",
+      "awayTeam": "Winner Match 92",
+      "venue": {
+        "name": "Hard Rock Stadium",
+        "city": "Miami Gardens"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Quarterfinals",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "quarterfinals-100",
+      "matchNumber": 100,
+      "stage": "Knockout Stage",
+      "round": "Quarterfinals",
+      "group": null,
+      "date": "2026-07-11",
+      "localTime": "8:00 p.m. UTC−5",
+      "homeTeam": "Winner Match 95",
+      "awayTeam": "Winner Match 96",
+      "venue": {
+        "name": "Arrowhead Stadium",
+        "city": "Kansas City"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Quarterfinals",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "semifinals-101",
+      "matchNumber": 101,
+      "stage": "Knockout Stage",
+      "round": "Semifinals",
+      "group": null,
+      "date": "2026-07-14",
+      "localTime": "2:00 p.m. UTC−5",
+      "homeTeam": "Winner Match 97",
+      "awayTeam": "Winner Match 98",
+      "venue": {
+        "name": "AT&T Stadium",
+        "city": "Arlington"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Semifinals",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "semifinals-102",
+      "matchNumber": 102,
+      "stage": "Knockout Stage",
+      "round": "Semifinals",
+      "group": null,
+      "date": "2026-07-15",
+      "localTime": "3:00 p.m. UTC−4",
+      "homeTeam": "Winner Match 99",
+      "awayTeam": "Winner Match 100",
+      "venue": {
+        "name": "Mercedes-Benz Stadium",
+        "city": "Atlanta"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Semifinals",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "final-104",
+      "matchNumber": 104,
+      "stage": "Knockout Stage",
+      "round": "Final",
+      "group": null,
+      "date": "2026-07-19",
+      "localTime": "3:00 p.m. UTC−4",
+      "homeTeam": "Winner Match 101",
+      "awayTeam": "Winner Match 102",
+      "venue": {
+        "name": "MetLife Stadium",
+        "city": "East Rutherford"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "Final",
+        "confidence": "medium"
+      }
+    }
+  ]
+}

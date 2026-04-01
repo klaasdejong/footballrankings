@@ -31,16 +31,26 @@ jobs:
         # rather than silently overwriting good data with empty/broken data.
         run: node scripts/fetch-rankings.mjs
 
-      - name: Commit updated rankings (if changed)
+      - name: Fetch latest WC2026 program
+        # Script exits with code 1 on failure — step (and job) will fail
+        # rather than writing partial schedule data.
+        run: node scripts/fetch-program.mjs
+
+      - name: Validate WC2026 program data
+        # Guard against partial/broken parser output before committing.
+        run: node scripts/validate-program.mjs
+
+      - name: Commit updated data (if changed)
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/rankings.json
+          git add data/program.json
 
           if git diff --staged --quiet; then
-            echo "Rankings data is unchanged — nothing to commit."
+            echo "Data files are unchanged — nothing to commit."
           else
-            git commit -m "chore: update FIFA rankings [skip ci]"
+            git commit -m "chore: update WC data [skip ci]"
             git push
-            echo "Rankings updated and pushed."
+            echo "Data files updated and pushed."
           fi

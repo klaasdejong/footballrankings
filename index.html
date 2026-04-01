@@ -57,6 +57,104 @@
       color: var(--muted);
     }
     #last-updated strong { color: var(--text); }
+    /* ── Section nav ── */
+    #section-nav {
+      display: flex;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-bottom: 2rem;
+    }
+    .section-btn {
+      background: #0f141b;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.45rem 1.1rem;
+      font-size: 0.85rem;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    .section-btn.active {
+      color: var(--text);
+      border-color: var(--gold);
+      background: #2b2000;
+    }
+    /* ── Simulation + tabs ── */
+    #sim-controls {
+      display: none;
+      max-width: 1200px;
+      margin: 0 auto 0.8rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.75rem 0.85rem;
+    }
+    .sim-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .sim-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .sim-value {
+      font-size: 0.8rem;
+      min-width: 3.2rem;
+      font-weight: 700;
+    }
+    #sim-impact {
+      width: min(280px, 80vw);
+    }
+    .sim-btn {
+      background: #0f141b;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.35rem 0.65rem;
+      font-size: 0.78rem;
+      cursor: pointer;
+    }
+    .sim-btn:hover { border-color: #4b5561; }
+    #sim-status {
+      margin-top: 0.45rem;
+      color: var(--muted);
+      font-size: 0.76rem;
+    }
+    #sim-help {
+      margin-top: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      line-height: 1.45;
+      border-top: 1px solid var(--border);
+      padding-top: 0.45rem;
+    }
+    #sim-help strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+    #view-tabs {
+      display: none;
+      max-width: 1200px;
+      margin: 0 auto 0.8rem;
+      gap: 0.55rem;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      background: #0f141b;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.38rem 0.8rem;
+      font-size: 0.78rem;
+      cursor: pointer;
+    }
+    .tab-btn.active {
+      color: var(--text);
+      border-color: #6e5010;
+      background: #2b2000;
+    }
 
     /* ── Warning banner ── */
     #warning {
@@ -132,6 +230,227 @@
       margin: 0 auto 1.2rem;
       gap: 1rem;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    /* ── Group-stage results panel ── */
+    #group-stage-panel {
+      display: none;
+      max-width: 1200px;
+      margin: 0 auto 1.2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.8rem 0.9rem;
+    }
+    .gs-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.55rem;
+    }
+    .gs-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+    .gs-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .gs-controls select {
+      background: #0f141b;
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 0.32rem 0.45rem;
+      font-size: 0.76rem;
+    }
+    #group-stage-meta {
+      color: var(--muted);
+      font-size: 0.76rem;
+      margin-bottom: 0.6rem;
+    }
+    .gs-group-title {
+      margin-top: 0.45rem;
+      margin-bottom: 0.2rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    #group-stage-list {
+      display: grid;
+      gap: 0.45rem;
+    }
+    .gs-item {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.45rem 0.55rem;
+      background: rgba(255,255,255,0.01);
+      display: grid;
+      gap: 0.28rem;
+    }
+    .gs-top {
+      font-size: 0.7rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 0.45rem;
+    }
+    .gs-main {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 0.55rem;
+    }
+    .gs-team {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      min-width: 0;
+    }
+    .gs-team.right { justify-content: flex-end; }
+    .gs-team-name {
+      font-size: 0.8rem;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .gs-score {
+      font-size: 0.9rem;
+      font-weight: 700;
+      min-width: 2.5rem;
+      text-align: center;
+    }
+
+    /* ── Spider bracket ── */
+    #spider-panel {
+      display: none;
+      max-width: 1200px;
+      margin: 0 auto 1.2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.75rem 0.8rem;
+      overflow-x: hidden;
+    }
+    .spider-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.7rem;
+    }
+    .spider-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      gap: 0.45rem;
+      min-width: 0;
+      align-items: stretch;
+    }
+    .spider-side {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.35rem;
+      align-items: stretch;
+    }
+    .spider-side.right {
+      direction: rtl;
+    }
+    .spider-side.right .spider-col {
+      direction: ltr;
+    }
+    .spider-col {
+      display: flex;
+      flex-direction: column;
+      min-height: 520px;
+    }
+    .spider-round-label {
+      height: 20px;
+      display: flex;
+      align-items: center;
+      font-size: 0.68rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.3rem;
+    }
+    .spider-matches {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      position: relative;
+    }
+    .spider-col.slots-8 .spider-matches {
+      justify-content: space-between;
+    }
+    .spider-col.slots-4 .spider-matches {
+      justify-content: space-between;
+      padding-top: 42px;
+      padding-bottom: 42px;
+    }
+    .spider-col.slots-2 .spider-matches {
+      justify-content: space-between;
+      padding-top: 120px;
+      padding-bottom: 120px;
+    }
+    .spider-col.slots-1 .spider-matches {
+      justify-content: center;
+    }
+    .spider-match {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.35rem 0.45rem;
+      background: rgba(255,255,255,0.01);
+      min-height: 60px;
+      position: relative;
+    }
+    .spider-teams {
+      font-size: 0.74rem;
+      font-weight: 600;
+      line-height: 1.35;
+      margin-bottom: 0.2rem;
+    }
+    .spider-meta {
+      font-size: 0.67rem;
+      color: var(--muted);
+    }
+    .spider-final {
+      border: 1px solid #6e5010;
+      background: #2b2000;
+      border-radius: 10px;
+      padding: 0.6rem 0.65rem;
+      min-width: 170px;
+      text-align: center;
+      position: relative;
+    }
+    .spider-center {
+      min-height: 520px;
+      padding-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .spider-final .spider-round-label {
+      margin-bottom: 0.25rem;
+    }
+    .spider-final .spider-teams {
+      font-size: 0.8rem;
+      margin-bottom: 0.3rem;
+    }
+
+    @media (max-width: 1280px) {
+      .spider-teams {
+        font-size: 0.7rem;
+      }
+      .spider-meta {
+        font-size: 0.64rem;
+      }
+      .spider-final {
+        min-width: 155px;
+        padding: 0.5rem;
+      }
     }
 
     /* ── Loading / error states ── */
@@ -284,18 +603,71 @@
   <div id="last-updated">Loading rankings…</div>
 </header>
 
+<nav id="section-nav" aria-label="Page sections">
+  <button class="section-btn active" type="button" data-section="rankings">Group Rankings</button>
+  <button class="section-btn" type="button" data-section="simulation" style="display:none">Simulation</button>
+</nav>
+
 <div id="warning">
   ⚠️ Some teams are missing from the rankings data (seed file only). 
   <strong>Trigger the GitHub Action</strong> to fetch the full 210-team list. 
   Missing teams are shown with 0 points and pushed to the bottom of each group.
 </div>
 
-<section id="fish-spotlight" aria-label="Fish in pond insights"></section>
-<section id="delta-spotlight" aria-label="Group average deviation insights"></section>
+<section id="rankings-section">
+  <section id="fish-spotlight" aria-label="Fish in pond insights"></section>
+  <section id="delta-spotlight" aria-label="Group average deviation insights"></section>
+  <div id="loading"><div class="spinner"></div>Fetching rankings…</div>
+  <div id="error" style="display:none"></div>
+  <div id="groups" role="list"></div>
+</section>
 
-<div id="loading"><div class="spinner"></div>Fetching rankings…</div>
-<div id="error" style="display:none"></div>
-<div id="groups" role="list"></div>
+<section id="simulation-section" style="display:none">
+  <section id="sim-controls" aria-label="Simulation controls">
+  <div class="sim-row">
+    <span class="sim-label">Impact</span>
+    <input id="sim-impact" type="range" min="0" max="100" step="1" value="80" aria-label="Simulation impact" />
+    <span id="sim-impact-value" class="sim-value">80%</span>
+    <button id="sim-run" class="sim-btn" type="button">Run Simulation</button>
+    <button id="sim-reset" class="sim-btn" type="button">Reset</button>
+  </div>
+  <div id="sim-status">Simulation not run yet.</div>
+  <div id="sim-help">
+    <strong>How the Impact slider works:</strong> each match is decided by a blend of <strong>luck</strong> and <strong>FIFA ranking points</strong>.
+    At <strong>0%</strong> every match is a pure coin flip — rankings are completely ignored.
+    At <strong>100%</strong> the stronger team wins every single match without exception.
+    In between, the <em>size of the points gap</em> between the two teams matters: France vs Haiti (≈700 pt gap)
+    will be heavily one-sided at high impact, while two closely ranked sides stay near 50/50 no matter the setting.
+    Think of it as a dial from "anything can happen on the day" to "quality always tells".
+  </div>
+</section>
+
+<nav id="view-tabs" aria-label="Main views">
+  <button class="tab-btn active" type="button" data-tab="groups">Group Stage Matches</button>
+  <button class="tab-btn" type="button" data-tab="knockout">Knockout Bracket</button>
+</nav>
+<section id="group-stage-panel" aria-label="Group stage simulation results">
+  <div class="gs-head">
+    <div class="gs-title">Group Stage Match Results</div>
+    <div class="gs-controls">
+      <select id="gs-view-mode" aria-label="Group stage ordering mode">
+        <option value="date">Order: Play Date</option>
+        <option value="group">Order: WC Group</option>
+      </select>
+      <select id="gs-team-filter" aria-label="Filter group stage by team">
+        <option value="all">All Teams</option>
+      </select>
+    </div>
+  </div>
+  <div id="group-stage-meta">Run simulation to populate scores.</div>
+  <div id="group-stage-list"></div>
+</section>
+<section id="spider-panel" aria-label="Spider knockout bracket">
+  <div class="spider-title">Knockout Spider View</div>
+  <div id="spider-wrap" class="spider-wrap"></div>
+</section>
+
+</section>
 
 <footer>
   Rankings pulled from the <a href="https://inside.fifa.com/fifa-world-ranking/men" target="_blank" rel="noopener">FIFA World Ranking</a>.
@@ -402,17 +774,580 @@ const BAR_COLOURS = ['#da3633','#e3692e','#d29922','#2ea043',
   const warningEl = document.getElementById('warning');
   const fishEl    = document.getElementById('fish-spotlight');
   const deltaEl   = document.getElementById('delta-spotlight');
+  const simControlsEl = document.getElementById('sim-controls');
+  const simImpactEl = document.getElementById('sim-impact');
+  const simImpactValueEl = document.getElementById('sim-impact-value');
+  const simRunEl = document.getElementById('sim-run');
+  const simResetEl = document.getElementById('sim-reset');
+  const simStatusEl = document.getElementById('sim-status');
+  const tabsEl = document.getElementById('view-tabs');
+  const tabButtons = Array.from(document.querySelectorAll('.tab-btn'));
+  const groupStagePanelEl = document.getElementById('group-stage-panel');
+  const groupStageMetaEl = document.getElementById('group-stage-meta');
+  const groupStageListEl = document.getElementById('group-stage-list');
+  const gsViewModeEl = document.getElementById('gs-view-mode');
+  const gsTeamFilterEl = document.getElementById('gs-team-filter');
+  const spiderPanelEl = document.getElementById('spider-panel');
+  const spiderWrapEl = document.getElementById('spider-wrap');
+  const rankingsSectionEl = document.getElementById('rankings-section');
+  const simulationSectionEl = document.getElementById('simulation-section');
+  const sectionBtns = Array.from(document.querySelectorAll('.section-btn'));
+
+  function setActiveSection(sectionName) {
+    rankingsSectionEl.style.display = sectionName === 'rankings' ? '' : 'none';
+    simulationSectionEl.style.display = sectionName === 'simulation' ? '' : 'none';
+    sectionBtns.forEach(b => b.classList.toggle('active', b.dataset.section === sectionName));
+  }
+
+  sectionBtns.forEach(btn => btn.addEventListener('click', () => setActiveSection(btn.dataset.section)));
 
   try {
     const res = await fetch('./data/rankings.json');
     if (!res.ok) throw new Error(`Could not load rankings data (HTTP ${res.status})`);
     const data = await res.json();
 
-    // Build lookup: normalised name → { rank, points, flagUrl }
+    // Load program metadata for visibility (non-blocking for rankings view).
+    let programDataLoaded = null;
+
+    try {
+      const programRes = await fetch('./data/program.json');
+      if (programRes.ok) {
+        const programData = await programRes.json();
+        programDataLoaded = programData;
+      } else {
+        // program unavailable, continue without it
+      }
+    } catch {
+      // program unavailable, continue without it
+    }
+
+    function byDateThenMatch(a, b) {
+      const aKey = `${a.date || ''} ${a.localTime || ''}`;
+      const bKey = `${b.date || ''} ${b.localTime || ''}`;
+      if (aKey < bKey) return -1;
+      if (aKey > bKey) return 1;
+      return (a.matchNumber ?? 9999) - (b.matchNumber ?? 9999);
+    }
+
     const lookup = new Map();
+
+    const simulationState = {
+      impact: 0.8,
+      hasRun: false,
+      matchResultsById: new Map(),
+      matchResultsByNumber: new Map(),
+      groupStandings: new Map(),
+    };
+
+    function clamp(value, min, max) {
+      return Math.max(min, Math.min(max, value));
+    }
+
+    function setActiveTab(tabName) {
+      tabButtons.forEach((btn) => {
+        const active = btn.dataset.tab === tabName;
+        btn.classList.toggle('active', active);
+      });
+
+      spiderPanelEl.style.display = tabName === 'knockout' ? 'block' : 'none';
+      groupStagePanelEl.style.display = tabName === 'groups' ? 'block' : 'none';
+    }
+
+    function teamPresentation(teamName) {
+      const info = findTeam(teamName);
+      const flagUrl = info?.flagUrl ?? '';
+      const fifaCode = FIFA_CODE[teamName] ?? '';
+      return { teamName, flagUrl, fifaCode };
+    }
+
+    function tinyFlagHtml(teamName) {
+      const p = teamPresentation(teamName);
+      if (p.flagUrl) {
+        return `<img class="team-flag" style="width:20px;height:14px" src="${p.flagUrl}" alt="${teamName} flag" loading="lazy">`;
+      }
+      if (p.fifaCode) {
+        return `<img class="team-flag" style="width:20px;height:14px" src="https://api.fifa.com/api/v3/picture/flags-sq-3/${p.fifaCode}" alt="${teamName} flag" loading="lazy">`;
+      }
+      return `<span class="flag-placeholder" style="width:20px;height:14px"></span>`;
+    }
+
+    function rankPoints(teamName) {
+      return findTeam(teamName)?.points ?? 1200;
+    }
+
+    function winProbability(homeTeam, awayTeam) {
+      const hp = rankPoints(homeTeam);
+      const ap = rankPoints(awayTeam);
+
+      if (simulationState.impact >= 0.999) {
+        if (hp === ap) return 0.5;
+        return hp > ap ? 1 : 0;
+      }
+
+      const gap = hp - ap;
+      const weighted = Math.tanh(gap / 320) * 0.5;
+      return clamp(0.5 + weighted * simulationState.impact, 0.02, 0.98);
+    }
+
+    function randomInt(maxInclusive) {
+      return Math.floor(Math.random() * (maxInclusive + 1));
+    }
+
+    function drawScore(probHome, knockout) {
+      const impact = simulationState.impact;
+      const certainty = Math.abs(probHome - 0.5) * 2;
+      const drawChance = knockout ? 0 : clamp(0.3 - 0.2 * impact - 0.1 * certainty, 0.08, 0.3);
+
+      if (!knockout && Math.random() < drawChance) {
+        const g = randomInt(2);
+        return { home: g, away: g, winner: null };
+      }
+
+      const homeWins = Math.random() < probHome;
+      const loser = randomInt(2);
+      let margin = 1;
+      if (Math.random() < certainty * (0.6 + impact * 0.4)) margin++;
+      if (Math.random() < certainty * impact * 0.3) margin++;
+
+      let home = homeWins ? loser + margin : loser;
+      let away = homeWins ? loser : loser + margin;
+
+      if (knockout && home === away) {
+        if (homeWins) home += 1;
+        else away += 1;
+      }
+
+      return { home, away, winner: home > away ? 'home' : 'away' };
+    }
+
+    function sortStandings(rows) {
+      return [...rows].sort((a, b) =>
+        (b.points - a.points) ||
+        (b.goalDiff - a.goalDiff) ||
+        (b.goalsFor - a.goalsFor) ||
+        a.team.localeCompare(b.team)
+      );
+    }
+
+    function resolveTeamToken(token) {
+      if (!token) return null;
+      if (findTeam(token) || FIFA_CODE[token]) return token;
+
+      let m = token.match(/^Winner Match\s+(\d+)$/i);
+      if (m) return simulationState.matchResultsByNumber.get(Number(m[1]))?.winnerTeam ?? null;
+
+      m = token.match(/^Loser Match\s+(\d+)$/i);
+      if (m) return simulationState.matchResultsByNumber.get(Number(m[1]))?.loserTeam ?? null;
+
+      m = token.match(/^Winner Group\s+([A-L])$/i);
+      if (m) return simulationState.groupStandings.get(m[1])?.[0]?.team ?? null;
+
+      m = token.match(/^Runner-up Group\s+([A-L])$/i);
+      if (m) return simulationState.groupStandings.get(m[1])?.[1]?.team ?? null;
+
+      m = token.match(/^3rd Group\s+([A-L](?:\/[A-L])+)$/i);
+      if (m) {
+        const allowed = m[1].split('/');
+        const thirdPool = [];
+        for (const g of allowed) {
+          const table = simulationState.groupStandings.get(g);
+          if (table?.[2]) thirdPool.push(table[2]);
+        }
+        if (thirdPool.length === 0) return null;
+        return sortStandings(thirdPool)[0]?.team ?? null;
+      }
+
+      return null;
+    }
+
+    function renderGroupStageList(matches) {
+      const groupMatches = matches
+        .filter((m) => m.stage === 'Group Stage')
+        .sort(byDateThenMatch);
+
+      const viewMode = gsViewModeEl?.value ?? 'date';
+      const teamFilter = gsTeamFilterEl?.value ?? 'all';
+      const filteredMatches = teamFilter === 'all'
+        ? groupMatches
+        : groupMatches.filter((m) => m.homeTeam === teamFilter || m.awayTeam === teamFilter);
+
+      if (groupMatches.length === 0) {
+        groupStageMetaEl.textContent = 'No group-stage matches found.';
+        groupStageListEl.innerHTML = '';
+        return;
+      }
+
+      if (filteredMatches.length === 0) {
+        groupStageMetaEl.textContent = 'No group-stage matches for this team filter.';
+        groupStageListEl.innerHTML = '';
+        return;
+      }
+
+      const renderItem = (m) => {
+        const result = simulationState.matchResultsById.get(m.id);
+        const hs = result ? result.homeScore : '—';
+        const as = result ? result.awayScore : '—';
+        const when = [m.date, m.localTime].filter(Boolean).join(' • ');
+        return `
+          <article class="gs-item">
+            <div class="gs-top">
+              <span>${m.round}</span>
+              <span>${when}</span>
+            </div>
+            <div class="gs-main">
+              <div class="gs-team">${tinyFlagHtml(m.homeTeam)}<span class="gs-team-name">${m.homeTeam}</span></div>
+              <div class="gs-score">${hs} - ${as}</div>
+              <div class="gs-team right"><span class="gs-team-name">${m.awayTeam}</span>${tinyFlagHtml(m.awayTeam)}</div>
+            </div>
+          </article>
+        `;
+      };
+
+      if (!simulationState.hasRun) {
+        groupStageMetaEl.textContent = 'Run simulation to populate scores.';
+      } else {
+        groupStageMetaEl.textContent = `Showing ${filteredMatches.length} simulated group-stage matches.`;
+      }
+
+      if (viewMode === 'group') {
+        const buckets = new Map();
+        filteredMatches.forEach((m) => {
+          const key = m.group || '?';
+          if (!buckets.has(key)) buckets.set(key, []);
+          buckets.get(key).push(m);
+        });
+
+        const groupOrder = Array.from(buckets.keys()).sort((a, b) => a.localeCompare(b));
+        groupStageListEl.innerHTML = groupOrder.map((group) => {
+          const items = buckets.get(group).sort(byDateThenMatch).map(renderItem).join('');
+          return `<div class="gs-group-title">Group ${group}</div>${items}`;
+        }).join('');
+      } else {
+        groupStageListEl.innerHTML = filteredMatches
+          .sort(byDateThenMatch)
+          .map(renderItem)
+          .join('');
+      }
+    }
+
+    function runSimulation(matches) {
+      simulationState.matchResultsById.clear();
+      simulationState.matchResultsByNumber.clear();
+      simulationState.groupStandings.clear();
+
+      const groupTables = new Map();
+      Object.entries(WC_GROUPS).forEach(([letter, teams]) => {
+        groupTables.set(letter, teams.map((team) => ({
+          team,
+          points: 0,
+          goalsFor: 0,
+          goalsAgainst: 0,
+          goalDiff: 0,
+        })));
+      });
+
+      // Pass 1: simulate all group-stage matches and build standings
+      const groupMatches = matches.filter((m) => m.stage !== 'Knockout Stage').sort(byDateThenMatch);
+      for (const match of groupMatches) {
+        const homeTeam = match.homeTeam;
+        const awayTeam = match.awayTeam;
+        if (!homeTeam || !awayTeam) continue;
+
+        const pHome = winProbability(homeTeam, awayTeam);
+        const score = drawScore(pHome, false);
+        const winnerTeam = score.home > score.away ? homeTeam : awayTeam;
+        const loserTeam = score.home > score.away ? awayTeam : homeTeam;
+
+        const payload = {
+          matchId: match.id,
+          matchNumber: match.matchNumber,
+          homeTeam,
+          awayTeam,
+          homeScore: score.home,
+          awayScore: score.away,
+          winnerTeam,
+          loserTeam,
+        };
+        simulationState.matchResultsById.set(match.id, payload);
+        if (Number.isInteger(match.matchNumber)) {
+          simulationState.matchResultsByNumber.set(match.matchNumber, payload);
+        }
+
+        const table = groupTables.get(match.group);
+        if (!table) continue;
+        const homeRow = table.find((r) => r.team === homeTeam);
+        const awayRow = table.find((r) => r.team === awayTeam);
+        if (!homeRow || !awayRow) continue;
+
+        homeRow.goalsFor += score.home;
+        homeRow.goalsAgainst += score.away;
+        homeRow.goalDiff = homeRow.goalsFor - homeRow.goalsAgainst;
+        awayRow.goalsFor += score.away;
+        awayRow.goalsAgainst += score.home;
+        awayRow.goalDiff = awayRow.goalsFor - awayRow.goalsAgainst;
+
+        if (score.home > score.away) {
+          homeRow.points += 3;
+        } else if (score.home < score.away) {
+          awayRow.points += 3;
+        } else {
+          homeRow.points += 1;
+          awayRow.points += 1;
+        }
+      }
+
+      // Commit standings before knockout resolution
+      for (const [group, rows] of groupTables.entries()) {
+        simulationState.groupStandings.set(group, sortStandings(rows));
+      }
+
+      // Pass 2: simulate knockout rounds in sequence so each round
+      // can resolve teams set by the previous round
+      const roundOrder = ['Round of 32', 'Round of 16', 'Quarterfinals', 'Semifinals', 'Final'];
+      const koMatches = matches.filter((m) => m.stage === 'Knockout Stage');
+      for (const round of roundOrder) {
+        const roundMatches = koMatches
+          .filter((m) => m.round === round)
+          .sort((a, b) => (a.matchNumber ?? 0) - (b.matchNumber ?? 0));
+        for (const match of roundMatches) {
+          const homeTeam = resolveTeamToken(match.homeTeam) ?? null;
+          const awayTeam = resolveTeamToken(match.awayTeam) ?? null;
+          if (!homeTeam || !awayTeam) continue;
+
+          const pHome = winProbability(homeTeam, awayTeam);
+          const score = drawScore(pHome, true);
+          const winnerTeam = score.home > score.away ? homeTeam : awayTeam;
+          const loserTeam = score.home > score.away ? awayTeam : homeTeam;
+
+          const payload = {
+            matchId: match.id,
+            matchNumber: match.matchNumber,
+            homeTeam,
+            awayTeam,
+            homeScore: score.home,
+            awayScore: score.away,
+            winnerTeam,
+            loserTeam,
+          };
+          simulationState.matchResultsById.set(match.id, payload);
+          if (Number.isInteger(match.matchNumber)) {
+            simulationState.matchResultsByNumber.set(match.matchNumber, payload);
+          }
+        }
+      }
+
+      simulationState.hasRun = true;
+    }
+
+    function matchTeamName(matchToken, resultName) {
+      if (resultName) return resultName;
+      const resolved = resolveTeamToken(matchToken);
+      if (resolved) return resolved;
+      if (findTeam(matchToken) || FIFA_CODE[matchToken]) return matchToken;
+      return 'TBD';
+    }
+
+    function spiderTeamLine(teamName) {
+      return `<div style="display:flex;align-items:center;gap:0.3rem;">${tinyFlagHtml(teamName)}<span>${teamName}</span></div>`;
+    }
+
+    function fmtMatch(m) {
+      if (!m) {
+        return `
+          <article class="spider-match">
+            <div class="spider-teams">TBD vs TBD</div>
+            <div class="spider-meta">TBD</div>
+          </article>
+        `;
+      }
+      const sim = simulationState.matchResultsById.get(m.id);
+      const homeName = matchTeamName(m.homeTeam, sim?.homeTeam);
+      const awayName = matchTeamName(m.awayTeam, sim?.awayTeam);
+      const meta = [m.date, m.localTime].filter(Boolean).join(' • ') || 'TBD';
+      const score = sim ? `${sim.homeScore} - ${sim.awayScore}` : '—';
+      return `
+        <article class="spider-match">
+          <div class="spider-teams">
+            ${spiderTeamLine(homeName)}
+            ${spiderTeamLine(awayName)}
+          </div>
+          <div class="spider-meta" style="font-weight:700;color:var(--text);">${score}</div>
+          <div class="spider-meta">${meta}</div>
+        </article>
+      `;
+    }
+
+    function buildSpiderView(matches) {
+      const final = matches.find(m => m.round === 'Final') || null;
+      if (!final) return;
+
+      // Build matchNumber → match lookup for all KO matches
+      const matchByNum = new Map();
+      matches
+        .filter(m => m.stage === 'Knockout Stage' && m.matchNumber != null)
+        .forEach(m => matchByNum.set(m.matchNumber, m));
+
+      // Extract child match numbers referenced as "Winner Match N" tokens
+      function childNums(m) {
+        return [m.homeTeam, m.awayTeam]
+          .map(t => { const h = t?.match(/^Winner Match\s+(\d+)$/i); return h ? Number(h[1]) : null; })
+          .filter(n => n !== null);
+      }
+
+      // Return all descendant matches exactly `depth` levels below rootNum, in tree order
+      function flatAtDepth(rootNum, depth) {
+        if (depth === 0) {
+          const m = matchByNum.get(rootNum);
+          return m ? [m] : [];
+        }
+        const root = matchByNum.get(rootNum);
+        if (!root) return [];
+        const result = [];
+        for (const k of childNums(root)) {
+          result.push(...flatAtDepth(k, depth - 1));
+        }
+        return result;
+      }
+
+      // Determine the depth of the bracket (R32=4 rounds, R16=3, QF=2, SF=1)
+      const sfNums = childNums(final);
+      if (sfNums.length < 2) {
+        spiderWrapEl.innerHTML = '<p style="padding:1rem;color:var(--muted)">Bracket data incomplete.</p>';
+        return;
+      }
+      const [leftSFNum, rightSFNum] = sfNums;
+
+      // Detect bracket depth: does SF have QF children, do QF have R16, do R16 have R32?
+      const hasBracketDepth = (sfNum, depth) => flatAtDepth(sfNum, depth).length > 0;
+      const hasR32 = hasBracketDepth(leftSFNum, 3) || hasBracketDepth(rightSFNum, 3);
+      const hasR16 = hasBracketDepth(leftSFNum, 2) || hasBracketDepth(rightSFNum, 2);
+      const hasQF = hasBracketDepth(leftSFNum, 1) || hasBracketDepth(rightSFNum, 1);
+
+      // Build each side in tree order so vertical positions correspond to bracket slots
+      const makeSide = (sfNum) => ({
+        sf: [matchByNum.get(sfNum)].filter(Boolean),
+        qf: hasQF ? flatAtDepth(sfNum, 1) : [],
+        r16: hasR16 ? flatAtDepth(sfNum, 2) : [],
+        r32: hasR32 ? flatAtDepth(sfNum, 3) : [],
+      });
+
+      const left = makeSide(leftSFNum);
+      const right = makeSide(rightSFNum);
+
+      const renderSide = (side, isRight) => {
+        // Left side columns go outward: R32 | R16 | QF | SF → center
+        // Right side columns go outward (mirrored): center → SF | QF | R16 | R32
+        const cols = [
+          ...(side.r32.length ? [{ label: 'Round of 32', list: side.r32 }] : []),
+          ...(side.r16.length ? [{ label: 'Round of 16', list: side.r16 }] : []),
+          ...(side.qf.length ? [{ label: 'Quarterfinals', list: side.qf }] : []),
+          { label: 'Semifinal', list: side.sf },
+        ];
+
+        return `
+          <div class="spider-side ${isRight ? 'right' : 'left'}">
+            ${cols.map((col, idx) => `
+              <div class="spider-col col-${idx + 1} slots-${col.list.length || 1}">
+                <div class="spider-round-label">${col.label}</div>
+                <div class="spider-matches">
+                  ${col.list.map(fmtMatch).join('') || fmtMatch(null)}
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      };
+
+      const finalResult = final ? simulationState.matchResultsById.get(final.id) : null;
+      const finalHome = final ? matchTeamName(final.homeTeam, finalResult?.homeTeam) : 'TBD';
+      const finalAway = final ? matchTeamName(final.awayTeam, finalResult?.awayTeam) : 'TBD';
+
+      const finalHtml = `
+        <div class="spider-final">
+          <div class="spider-round-label">Final</div>
+          <div class="spider-teams">
+            ${spiderTeamLine(finalHome)}
+            ${spiderTeamLine(finalAway)}
+          </div>
+          <div class="spider-meta" style="font-weight:700;color:var(--text);">${finalResult ? `${finalResult.homeScore} - ${finalResult.awayScore}` : '—'}</div>
+          <div class="spider-meta">${final ? [final.date, final.localTime].filter(Boolean).join(' • ') : 'TBD'}</div>
+        </div>
+      `;
+
+      spiderWrapEl.innerHTML = `${renderSide(left, false)}<div class="spider-center">${finalHtml}</div>${renderSide(right, true)}`;
+    }
+
+    if (programDataLoaded && Array.isArray(programDataLoaded.matches)) {
+      tabsEl.style.display = 'flex';
+      simControlsEl.style.display = 'block';
+
+      tabButtons.forEach((btn) => {
+        btn.addEventListener('click', () => setActiveTab(btn.dataset.tab));
+      });
+
+      simImpactEl.addEventListener('input', () => {
+        const pct = Number(simImpactEl.value);
+        simImpactValueEl.textContent = `${pct}%`;
+        simulationState.impact = pct / 100;
+      });
+
+      simRunEl.addEventListener('click', () => {
+        runSimulation(programDataLoaded.matches);
+        renderGroupStageList(programDataLoaded.matches);
+        buildSpiderView(programDataLoaded.matches);
+        simStatusEl.textContent = `Simulation complete at ${new Date().toLocaleTimeString()} with impact ${Math.round(simulationState.impact * 100)}%.`;
+        setActiveTab('groups');
+      });
+
+      simResetEl.addEventListener('click', () => {
+        simulationState.hasRun = false;
+        simulationState.matchResultsById.clear();
+        simulationState.matchResultsByNumber.clear();
+        simulationState.groupStandings.clear();
+        renderGroupStageList(programDataLoaded.matches);
+        buildSpiderView(programDataLoaded.matches);
+        simStatusEl.textContent = 'Simulation reset.';
+      });
+
+      gsViewModeEl.addEventListener('change', () => {
+        renderGroupStageList(programDataLoaded.matches);
+      });
+
+      gsTeamFilterEl.addEventListener('change', () => {
+        renderGroupStageList(programDataLoaded.matches);
+      });
+
+      const teams = [...new Set(
+        programDataLoaded.matches
+          .filter((m) => m.stage === 'Group Stage')
+          .flatMap((m) => [m.homeTeam, m.awayTeam])
+      )].sort((a, b) => a.localeCompare(b));
+
+      teams.forEach((team) => {
+        const opt = document.createElement('option');
+        opt.value = team;
+        opt.textContent = team;
+        gsTeamFilterEl.appendChild(opt);
+      });
+
+      renderGroupStageList(programDataLoaded.matches);
+      buildSpiderView(programDataLoaded.matches);
+      setActiveTab('groups');
+
+      // Show the Simulation section button now that data is ready
+      const simBtn = sectionBtns.find(b => b.dataset.section === 'simulation');
+      if (simBtn) simBtn.style.display = '';
+    }
+
+    // Build lookup: normalised name → { rank, points, flagUrl }
     for (const t of data.rankings) {
       const key = t.name.toLowerCase().trim();
       lookup.set(key, t);
+    }
+
+    if (programDataLoaded && Array.isArray(programDataLoaded.matches)) {
+      renderGroupStageList(programDataLoaded.matches);
+      buildSpiderView(programDataLoaded.matches);
     }
 
     function findTeam(displayName) {
