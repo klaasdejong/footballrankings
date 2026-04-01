@@ -106,6 +106,14 @@
       color: var(--muted);
     }
 
+    #delta-spotlight {
+      display: none;
+      max-width: 1200px;
+      margin: 0 auto 1.2rem;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
     /* ── Loading / error states ── */
     #loading, #error {
       text-align: center;
@@ -263,6 +271,7 @@
 </div>
 
 <section id="fish-spotlight" aria-label="Fish in pond insights"></section>
+<section id="delta-spotlight" aria-label="Group average deviation insights"></section>
 
 <div id="loading"><div class="spinner"></div>Fetching rankings…</div>
 <div id="error" style="display:none"></div>
@@ -372,6 +381,7 @@ const BAR_COLOURS = ['#da3633','#e3692e','#d29922','#2ea043',
   const updatedEl = document.getElementById('last-updated');
   const warningEl = document.getElementById('warning');
   const fishEl    = document.getElementById('fish-spotlight');
+  const deltaEl   = document.getElementById('delta-spotlight');
 
   try {
     const res = await fetch('./data/rankings.json');
@@ -471,6 +481,44 @@ const BAR_COLOURS = ['#da3633','#e3692e','#d29922','#2ea043',
         </article>
       `;
       fishEl.style.display = 'grid';
+    }
+
+    const knownTeams = groups.flatMap(g =>
+      g.teams
+        .filter(t => t.points > 0)
+        .map(t => ({
+          ...t,
+          groupLetter: g.letter,
+          groupAvg: g.avgPoints,
+          diffFromAvg: t.points - g.avgPoints,
+        }))
+    );
+
+    const mostAboveAvg = knownTeams.length
+      ? [...knownTeams].sort((a, b) => b.diffFromAvg - a.diffFromAvg)[0]
+      : null;
+
+    const mostBelowAvg = knownTeams.length
+      ? [...knownTeams].sort((a, b) => a.diffFromAvg - b.diffFromAvg)[0]
+      : null;
+
+    if (mostAboveAvg && mostBelowAvg) {
+      const aboveDiff = `+${mostAboveAvg.diffFromAvg.toFixed(2)}`;
+      const belowDiff = `${mostBelowAvg.diffFromAvg.toFixed(2)}`;
+
+      deltaEl.innerHTML = `
+        <article class="fish-card">
+          <div class="fish-kicker">Most Above Group Baseline</div>
+          <div class="fish-team">${mostAboveAvg.name}</div>
+          <div class="fish-meta">Group ${mostAboveAvg.groupLetter} • ${mostAboveAvg.points.toFixed(2)} pts • ${aboveDiff} vs group avg</div>
+        </article>
+        <article class="fish-card">
+          <div class="fish-kicker">Most Below Group Baseline</div>
+          <div class="fish-team">${mostBelowAvg.name}</div>
+          <div class="fish-meta">Group ${mostBelowAvg.groupLetter} • ${mostBelowAvg.points.toFixed(2)} pts • ${belowDiff} vs group avg</div>
+        </article>
+      `;
+      deltaEl.style.display = 'grid';
     }
 
     // Find max avg for bar scaling
