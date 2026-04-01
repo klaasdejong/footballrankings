@@ -1,6 +1,6 @@
 {
   "updatedAt": "01 April 2026",
-  "fetchedAt": "2026-04-01T18:09:57.750Z",
+  "fetchedAt": "2026-04-01T18:21:32.513Z",
   "rankings": [
     {
       "rank": 1,
@@ -381,9 +381,9 @@
       "confederation": ""
     },
     {
-      "rank": 55,
-      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/qa.svg",
-      "name": "Qatar",
+      "rank": 56,
+      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/ro.svg",
+      "name": "Romania",
       "points": 1451.16,
       "confederation": ""
     },
@@ -472,9 +472,9 @@
       "confederation": ""
     },
     {
-      "rank": 69,
-      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/ae.svg",
-      "name": "United Arab Emirates",
+      "rank": 70,
+      "flagUrl": "https://flagcdn.com/28x21/gb-nir.png",
+      "name": "Northern Ireland",
       "points": 1362.05,
       "confederation": ""
     },
@@ -529,15 +529,15 @@
     },
     {
       "rank": 78,
-      "flagUrl": "https://flagcdn.com/28x21/.png",
+      "flagUrl": "",
       "name": "Kosovo",
       "points": 1318.82,
       "confederation": ""
     },
     {
-      "rank": 79,
-      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/om.svg",
-      "name": "Oman",
+      "rank": 80,
+      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/gn.svg",
+      "name": "Guinea",
       "points": 1300.01,
       "confederation": ""
     },
@@ -563,9 +563,9 @@
       "confederation": ""
     },
     {
-      "rank": 84,
-      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/sy.svg",
-      "name": "Syria",
+      "rank": 85,
+      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/nz.svg",
+      "name": "New Zealand",
       "points": 1281.57,
       "confederation": ""
     },
@@ -584,16 +584,16 @@
       "confederation": ""
     },
     {
-      "rank": 88,
-      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/ug.svg",
-      "name": "Uganda",
+      "rank": 90,
+      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/bj.svg",
+      "name": "Benin",
       "points": 1258.98,
       "confederation": ""
     },
     {
-      "rank": 91,
-      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/bh.svg",
-      "name": "Bahrain",
+      "rank": 92,
+      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/zm.svg",
+      "name": "Zambia",
       "points": 1255.82,
       "confederation": ""
     },
@@ -605,16 +605,16 @@
       "confederation": ""
     },
     {
-      "rank": 94,
-      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/ps.svg",
-      "name": "Palestine",
+      "rank": 95,
+      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/gt.svg",
+      "name": "Guatemala",
       "points": 1243.47,
       "confederation": ""
     },
     {
-      "rank": 96,
-      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/th.svg",
-      "name": "Thailand",
+      "rank": 97,
+      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/by.svg",
+      "name": "Belarus",
       "points": 1235.82,
       "confederation": ""
     },
@@ -675,9 +675,9 @@
       "confederation": ""
     },
     {
-      "rank": 108,
-      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/lb.svg",
-      "name": "Lebanon",
+      "rank": 109,
+      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/km.svg",
+      "name": "Comoros",
       "points": 1182.96,
       "confederation": ""
     },
@@ -731,16 +731,16 @@
       "confederation": ""
     },
     {
-      "rank": 117,
-      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/sd.svg",
-      "name": "Sudan",
+      "rank": 118,
+      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/na.svg",
+      "name": "Namibia",
       "points": 1153.84,
       "confederation": ""
     },
     {
-      "rank": 119,
-      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/kp.svg",
-      "name": "Korea DPR",
+      "rank": 120,
+      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/tg.svg",
+      "name": "Togo",
       "points": 1147.31,
       "confederation": ""
     },
@@ -829,16 +829,16 @@
       "confederation": ""
     },
     {
-      "rank": 133,
-      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/cg.svg",
-      "name": "Congo",
+      "rank": 138,
+      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/lv.svg",
+      "name": "Latvia",
       "points": 1086.67,
       "confederation": ""
     },
     {
-      "rank": 139,
-      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/cf.svg",
-      "name": "Central African Republic",
+      "rank": 141,
+      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/lr.svg",
+      "name": "Liberia",
       "points": 1079.02,
       "confederation": ""
     },
@@ -885,16 +885,16 @@
       "confederation": ""
     },
     {
-      "rank": 148,
-      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/sg.svg",
-      "name": "Singapore",
+      "rank": 150,
+      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/gy.svg",
+      "name": "Guyana",
       "points": 1049.32,
       "confederation": ""
     },
     {
-      "rank": 151,
-      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/hk.svg",
-      "name": "Hong Kong, China",
+      "rank": 152,
+      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/nc.svg",
+      "name": "New Caledonia",
       "points": 1036.95,
       "confederation": ""
     },
@@ -913,30 +913,30 @@
       "confederation": ""
     },
     {
-      "rank": 155,
-      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/fj.svg",
-      "name": "Fiji",
+      "rank": 156,
+      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/pr.svg",
+      "name": "Puerto Rico",
       "points": 1026.11,
       "confederation": ""
     },
     {
-      "rank": 157,
-      "flagUrl": "https://flagcdn.com/28x21/pf.png",
-      "name": "Tahiti",
+      "rank": 159,
+      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/md.svg",
+      "name": "Moldova",
       "points": 1004.16,
       "confederation": ""
     },
     {
-      "rank": 160,
-      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/vu.svg",
-      "name": "Vanuatu",
+      "rank": 161,
+      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/mt.svg",
+      "name": "Malta",
       "points": 992.11,
       "confederation": ""
     },
     {
-      "rank": 162,
-      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/af.svg",
-      "name": "Afghanistan",
+      "rank": 165,
+      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/gd.svg",
+      "name": "Grenada",
       "points": 982.53,
       "confederation": ""
     },
@@ -962,9 +962,9 @@
       "confederation": ""
     },
     {
-      "rank": 169,
-      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/pg.svg",
-      "name": "Papua New Guinea",
+      "rank": 170,
+      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/ss.svg",
+      "name": "South Sudan",
       "points": 973.67,
       "confederation": ""
     },
@@ -983,9 +983,9 @@
       "confederation": ""
     },
     {
-      "rank": 173,
-      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/mv.svg",
-      "name": "Maldives",
+      "rank": 178,
+      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/bb.svg",
+      "name": "Barbados",
       "points": 909.89,
       "confederation": ""
     },
@@ -1025,23 +1025,23 @@
       "confederation": ""
     },
     {
-      "rank": 184,
-      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/mn.svg",
-      "name": "Mongolia",
+      "rank": 186,
+      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/aw.svg",
+      "name": "Aruba",
       "points": 877.29,
       "confederation": ""
     },
     {
-      "rank": 187,
+      "rank": 189,
       "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/ws.svg",
-      "name": "Samoa",
+      "name": "American Samoa",
       "points": 871.61,
       "confederation": ""
     },
     {
-      "rank": 190,
-      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/la.svg",
-      "name": "Laos",
+      "rank": 192,
+      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/st.svg",
+      "name": "São Tomé and Príncipe",
       "points": 861.84,
       "confederation": ""
     },
@@ -1053,9 +1053,9 @@
       "confederation": ""
     },
     {
-      "rank": 194,
-      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/lk.svg",
-      "name": "Sri Lanka",
+      "rank": 195,
+      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/ky.svg",
+      "name": "Cayman Islands",
       "points": 855.45,
       "confederation": ""
     },
@@ -1095,9 +1095,9 @@
       "confederation": ""
     },
     {
-      "rank": 204,
-      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/tc.svg",
-      "name": "Turks and Caicos Islands",
+      "rank": 205,
+      "flagUrl": "https://cdn.ipregistry.co/flags/twemoji/li.svg",
+      "name": "Liechtenstein",
       "points": 803.57,
       "confederation": ""
     },

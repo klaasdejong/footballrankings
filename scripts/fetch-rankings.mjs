@@ -17,7 +17,7 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const FIFA_API_BASE = 'https://www.fifa.com/api/ranking-overview';
 const OUTPUT_PATH   = join(__dirname, '..', 'data', 'rankings.json');
-const FALLBACK_RANKING_URL = 'https://football-ranking.com/fifa-world-rankings';
+const FALLBACK_RANKING_URL = 'https://football-ranking.com/fifa-rankings';
 
 // WC2026 display names — used only for the diagnostic check at the end.
 const WC2026_TEAMS = [
@@ -167,29 +167,62 @@ async function tryScrapeHtmlPage() {
 // ---------------------------------------------------------------------------
 function decodeHtml(text) {
   return text
+    .replace(/&#x27;/g, "'")
+    .replace(/&#x2F;/g, '/')
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#(\d+);/g, (_, num) => String.fromCodePoint(parseInt(num, 10)))
     .replace(/&nbsp;/g, ' ')
     .replace(/&amp;/g, '&')
     .replace(/&quot;/g, '"')
     .replace(/&#39;/g, "'")
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
+    .replace(/\s+/g, ' ')
     .trim();
 }
 
 function parseFallbackRows(html) {
   const rows = [];
-  const rowRegex = /<tr>\s*<td[^>]*>\s*(\d+)\s*&nbsp;[\s\S]*?<\/td>\s*<td>[\s\S]*?<img[^>]+src="([^"]+)"[^>]*>[\s\S]*?&nbsp;&nbsp;([^<]+)\s*<span[\s\S]*?<\/td>\s*<td>[\s\S]*?<b>([0-9,]+\.[0-9]+)<\/b>/g;
+  const tableMatch = html.match(/<table[^>]*class="[^"]*table-striped table-bordered table-hover[^"]*"[^>]*>([\s\S]*?)<\/table>/i);
+  if (!tableMatch) return rows;
 
-  let match;
-  while ((match = rowRegex.exec(html)) !== null) {
+  const rowRegex = /<tr>([\s\S]*?)<\/tr>/gi;
+  let rowMatch;
+
+  while ((rowMatch = rowRegex.exec(tableMatch[1])) !== null) {
+    const rowHtml = rowMatch[1];
+    if (!/<td/i.test(rowHtml)) continue;
+
+    const cells = [...rowHtml.matchAll(/<td[^>]*>([\s\S]*?)<\/td>/gi)].map((m) => m[1]);
+    if (cells.length < 3) continue;
+
+    const rankMatch = cells[0].match(/(\d{1,3})\s*&nbsp;/);
+    if (!rankMatch) continue;
+    const rank = Number(rankMatch[1]);
+    if (!Number.isFinite(rank) || rank < 1 || rank > 250) continue;
+
+    const flagMatch = cells[1].match(/<img[^>]+src="([^"]+)"/i);
+    let flagUrl = flagMatch ? decodeHtml(flagMatch[1]) : '';
+    if (/\/\.png$/i.test(flagUrl)) flagUrl = '';
+
+    const nameText = decodeHtml(cells[1].replace(/<[^>]+>/g, ' '));
+    const name = nameText.replace(/\s*\([A-Z]{2,4}\)\s*$/, '').trim();
+    if (!name) continue;
+
+    const pointsMatch = cells[2].match(/<b>([0-9,]+\.[0-9]+)<\/b>/i);
+    if (!pointsMatch) continue;
+    const points = Number(pointsMatch[1].replace(/,/g, ''));
+    if (!Number.isFinite(points)) continue;
+
     rows.push({
-      rank: Number(match[1]),
-      flagUrl: decodeHtml(match[2]),
-      name: decodeHtml(match[3]),
-      points: Number(match[4].replace(/,/g, '')),
+      rank,
+      flagUrl,
+      name,
+      points,
       confederation: '',
     });
   }
+
   return rows;
 }
 
