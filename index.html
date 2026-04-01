@@ -74,6 +74,38 @@
       margin-right: auto;
     }
 
+    /* ── Fish spotlight ── */
+    #fish-spotlight {
+      display: none;
+      max-width: 1200px;
+      margin: 0 auto 1.2rem;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .fish-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.85rem 1rem;
+    }
+    .fish-kicker {
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+    .fish-team {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+    .fish-meta {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
     /* ── Loading / error states ── */
     #loading, #error {
       text-align: center;
@@ -230,6 +262,8 @@
   Missing teams are shown with 0 points and pushed to the bottom of each group.
 </div>
 
+<section id="fish-spotlight" aria-label="Fish in pond insights"></section>
+
 <div id="loading"><div class="spinner"></div>Fetching rankings…</div>
 <div id="error" style="display:none"></div>
 <div id="groups" role="list"></div>
@@ -337,6 +371,7 @@ const BAR_COLOURS = ['#da3633','#e3692e','#d29922','#2ea043',
   const groupsEl  = document.getElementById('groups');
   const updatedEl = document.getElementById('last-updated');
   const warningEl = document.getElementById('warning');
+  const fishEl    = document.getElementById('fish-spotlight');
 
   try {
     const res = await fetch('./data/rankings.json');
@@ -398,6 +433,45 @@ const BAR_COLOURS = ['#da3633','#e3692e','#d29922','#2ea043',
 
     // Sort by avg points descending (toughest first)
     groups.sort((a, b) => b.avgPoints - a.avgPoints);
+
+    function pickLowestKnownTeam(group) {
+      const known = group.teams.filter(t => t.points > 0);
+      const pool = known.length ? known : group.teams;
+      return [...pool].sort((a, b) => a.points - b.points)[0] || null;
+    }
+
+    function pickHighestKnownTeam(group) {
+      const known = group.teams.filter(t => t.points > 0);
+      const pool = known.length ? known : group.teams;
+      return [...pool].sort((a, b) => b.points - a.points)[0] || null;
+    }
+
+    // Smallest fish in biggest pond / biggest fish in smallest pond
+    const toughestGroup = groups[0];
+    const easiestGroup = groups[groups.length - 1];
+    const smallestFish = toughestGroup ? pickLowestKnownTeam(toughestGroup) : null;
+    const biggestFish = easiestGroup ? pickHighestKnownTeam(easiestGroup) : null;
+
+    if (smallestFish && biggestFish) {
+      const sfPts = smallestFish.points > 0 ? smallestFish.points.toFixed(2) : '—';
+      const sfRank = smallestFish.rank != null ? `#${smallestFish.rank}` : '—';
+      const bfPts = biggestFish.points > 0 ? biggestFish.points.toFixed(2) : '—';
+      const bfRank = biggestFish.rank != null ? `#${biggestFish.rank}` : '—';
+
+      fishEl.innerHTML = `
+        <article class="fish-card">
+          <div class="fish-kicker">Smallest Fish In Biggest Pond</div>
+          <div class="fish-team">${smallestFish.name}</div>
+          <div class="fish-meta">Group ${toughestGroup.letter} • ${sfPts} pts • ${sfRank}</div>
+        </article>
+        <article class="fish-card">
+          <div class="fish-kicker">Biggest Fish In Smallest Pond</div>
+          <div class="fish-team">${biggestFish.name}</div>
+          <div class="fish-meta">Group ${easiestGroup.letter} • ${bfPts} pts • ${bfRank}</div>
+        </article>
+      `;
+      fishEl.style.display = 'grid';
+    }
 
     // Find max avg for bar scaling
     const maxAvg = groups[0].avgPoints || 1;
