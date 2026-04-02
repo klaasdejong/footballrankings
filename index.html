@@ -349,27 +349,40 @@
       border-radius: var(--radius);
       padding: 0.75rem 0.8rem;
       overflow-x: hidden;
+      overflow-y: hidden;
     }
     .spider-title {
       font-size: 0.95rem;
       font-weight: 700;
       margin-bottom: 0.7rem;
     }
+    .spider-scroll-hint {
+      display: none;
+      margin-bottom: 0.55rem;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
     .spider-wrap {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-      gap: 0.45rem;
+      display: flex;
+      gap: 0.8rem;
       min-width: 0;
       align-items: stretch;
+      justify-content: center;
     }
     .spider-side {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 0.35rem;
+      gap: 0.45rem;
       align-items: stretch;
+      padding: 0.6rem 0.5rem;
+      flex: 1;
+    }
+    .spider-side.left {
+      padding-right: 0.5rem;
     }
     .spider-side.right {
       direction: rtl;
+      padding-left: 0.5rem;
     }
     .spider-side.right .spider-col {
       direction: ltr;
@@ -378,6 +391,7 @@
       display: flex;
       flex-direction: column;
       min-height: 520px;
+      min-width: 0;
     }
     .spider-round-label {
       height: 20px;
@@ -401,13 +415,13 @@
     }
     .spider-col.slots-4 .spider-matches {
       justify-content: space-between;
-      padding-top: 42px;
-      padding-bottom: 42px;
+      padding-top: 39.6px;
+      padding-bottom: 39.6px;
     }
     .spider-col.slots-2 .spider-matches {
       justify-content: space-between;
-      padding-top: 120px;
-      padding-bottom: 120px;
+      padding-top: 118.8px;
+      padding-bottom: 118.8px;
     }
     .spider-col.slots-1 .spider-matches {
       justify-content: center;
@@ -417,18 +431,54 @@
       border-radius: 8px;
       padding: 0.35rem 0.45rem;
       background: rgba(255,255,255,0.01);
-      min-height: 60px;
+      height: 72px;
+      min-height: 72px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       position: relative;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      overflow: hidden;
     }
     .spider-teams {
       font-size: 0.74rem;
       font-weight: 600;
       line-height: 1.35;
       margin-bottom: 0.2rem;
+      min-width: 0;
     }
     .spider-meta {
       font-size: 0.67rem;
       color: var(--muted);
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+    .spider-match .spider-meta {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .spider-match .spider-teams {
+      font-size: 0.7rem;
+      line-height: 1.45;
+      margin-bottom: 0;
+    }
+    .spider-match-score {
+      font-size: 0.67rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .spider-match-time {
+      font-size: 0.62rem;
+      color: var(--muted);
+      line-height: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .spider-final {
       border: 1px solid #6e5010;
@@ -436,16 +486,50 @@
       border-radius: 10px;
       padding: 0.6rem 0.65rem;
       min-width: 170px;
+      max-width: 100%;
       text-align: center;
       position: relative;
+      overflow: hidden;
+    }
+    .spider-third-place-final {
+      border: 1px solid #8b5a2b;
+      background: rgba(139, 90, 43, 0.15);
     }
     .spider-center {
       min-height: 520px;
-      padding-top: 24px;
+      min-width: 170px;
+      padding: 0.6rem;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       position: relative;
+      flex-shrink: 0;
+    }
+    .spider-finals-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: center;
+      width: 100%;
+    }
+    .spider-third-place {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.01);
+      border-radius: 8px;
+      padding: 0.35rem 0.45rem;
+      min-width: 170px;
+      max-width: 100%;
+      min-height: 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.72rem;
     }
     .spider-final .spider-round-label {
       margin-bottom: 0.25rem;
@@ -455,6 +539,37 @@
       margin-bottom: 0.3rem;
     }
 
+    /* 70% of 1920px = 1344px. Below this width, force Final to regular card footprint. */
+    @media (max-width: 1344px) {
+      .spider-center {
+        min-width: 125px;
+        width: 125px;
+        max-width: 125px;
+      }
+      .spider-final {
+        min-width: 125px;
+        width: 125px;
+        max-width: 125px;
+        border-radius: 8px;
+        padding: 0.35rem 0.45rem;
+      }
+      .spider-final .spider-round-label {
+        margin-bottom: 0.2rem;
+      }
+      .spider-final .spider-teams {
+        font-size: 0.74rem;
+        margin-bottom: 0.2rem;
+      }
+      .spider-third-place {
+        min-width: 125px;
+        width: 125px;
+        max-width: 125px;
+        border-radius: 8px;
+        padding: 0.35rem 0.45rem;
+        min-height: 60px;
+      }
+    }
+
     @media (max-width: 1280px) {
       .spider-teams {
         font-size: 0.7rem;
@@ -462,9 +577,44 @@
       .spider-meta {
         font-size: 0.64rem;
       }
-      .spider-final {
-        min-width: 155px;
-        padding: 0.5rem;
+    }
+
+    /* On smaller screens, preserve readable card widths and allow horizontal scroll. */
+    @media (max-width: 1024px) {
+      #spider-panel {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .spider-scroll-hint {
+        display: block;
+      }
+      .spider-wrap {
+        min-width: 1160px;
+        gap: 0.8rem;
+        justify-content: flex-start;
+      }
+      .spider-side.left {
+        padding-right: 0.5rem;
+      }
+      .spider-side.right {
+        padding-left: 0.5rem;
+      }
+      .spider-side {
+        grid-template-columns: repeat(4, minmax(125px, 1fr));
+        gap: 0.45rem;
+      }
+      .spider-center {
+        min-width: 185px;
+        flex-shrink: 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .spider-wrap {
+        min-width: 1080px;
+      }
+      .spider-side {
+        grid-template-columns: repeat(4, minmax(118px, 1fr));
       }
     }
 
@@ -680,6 +830,7 @@
 </section>
 <section id="spider-panel" aria-label="Spider knockout bracket">
   <div class="spider-title">Knockout Spider View</div>
+  <div class="spider-scroll-hint">Swipe horizontally to view the full bracket.</div>
   <div id="spider-wrap" class="spider-wrap"></div>
 </section>
 
@@ -1026,7 +1177,7 @@ const BAR_COLOURS = ['#da3633','#e3692e','#d29922','#2ea043',
         const result = simulationState.matchResultsById.get(m.id);
         const hs = result ? result.homeScore : '—';
         const as = result ? result.awayScore : '—';
-        const when = [m.date, m.localTime].filter(Boolean).join(' • ');
+        const when = fmtUserDateTime(m.date, m.localTime) || [m.date, m.localTime].filter(Boolean).join(' • ');
         return `
           <article class="gs-item">
             <div class="gs-top">
@@ -1142,7 +1293,7 @@ const BAR_COLOURS = ['#da3633','#e3692e','#d29922','#2ea043',
 
       // Pass 2: simulate knockout rounds in sequence so each round
       // can resolve teams set by the previous round
-      const roundOrder = ['Round of 32', 'Round of 16', 'Quarterfinals', 'Semifinals', 'Final'];
+      const roundOrder = ['Round of 32', 'Round of 16', 'Quarterfinals', 'Semifinals', '3rd Place Final', 'Final'];
       const koMatches = matches.filter((m) => m.stage === 'Knockout Stage');
       for (const round of roundOrder) {
         const roundMatches = koMatches
@@ -1186,8 +1337,44 @@ const BAR_COLOURS = ['#da3633','#e3692e','#d29922','#2ea043',
       return 'TBD';
     }
 
+    // Parse "1:00 p.m. UTC−6" + "2026-06-11" into a JS Date (UTC pinned).
+    // The Unicode minus (U+2212) used in UTC−N is handled explicitly.
+    function parseMatchDate(dateStr, localTimeStr) {
+      if (!dateStr || !localTimeStr) return null;
+      const m = localTimeStr.match(/^(\d{1,2}):(\d{2})\s+(a\.m\.|p\.m\.)\s+UTC[−\-](\d+)$/);
+      if (!m) return null;
+      let hour = parseInt(m[1], 10);
+      const min = parseInt(m[2], 10);
+      const meridiem = m[3];
+      const offsetHours = parseInt(m[4], 10);
+      if (meridiem === 'a.m.') {
+        if (hour === 12) hour = 0;
+      } else {
+        if (hour !== 12) hour += 12;
+      }
+      // venue local time = UTC - offsetHours, so UTC = venue + offsetHours
+      const [y, mo, d] = dateStr.split('-').map(Number);
+      const utcMs = Date.UTC(y, mo - 1, d, hour + offsetHours, min, 0);
+      return new Date(utcMs);
+    }
+
+    // Returns a formatted date+time string in the user's local timezone.
+    // compact=true omits the " • " separator (for tight bracket cards).
+    // Falls back to raw strings on parse failure.
+    function fmtUserDateTime(dateStr, localTimeStr, compact = false) {
+      if (!dateStr && !localTimeStr) return '';
+      const dt = parseMatchDate(dateStr, localTimeStr);
+      if (!dt) return [dateStr, localTimeStr].filter(Boolean).join(' • ');
+      const lang = navigator.language || 'en';
+      const d2 = String(dt.getDate()).padStart(2, '0');
+      const m2 = String(dt.getMonth() + 1).padStart(2, '0');
+      const datePart = `${d2}/${m2}`;
+      const timePart = dt.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZoneName: 'short' });
+      return compact ? `${datePart} ${timePart}` : `${datePart} • ${timePart}`;
+    }
+
     function spiderTeamLine(teamName) {
-      return `<div style="display:flex;align-items:center;gap:0.3rem;">${tinyFlagHtml(teamName)}<span>${teamName}</span></div>`;
+      return `<div style="display:flex;align-items:center;gap:0.3rem;min-width:0;">${tinyFlagHtml(teamName)}<span style="min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block;">${teamName}</span></div>`;
     }
 
     function fmtMatch(m) {
@@ -1195,14 +1382,15 @@ const BAR_COLOURS = ['#da3633','#e3692e','#d29922','#2ea043',
         return `
           <article class="spider-match">
             <div class="spider-teams">TBD vs TBD</div>
-            <div class="spider-meta">TBD</div>
+            <div class="spider-match-score">—</div>
+            <div class="spider-match-time">TBD</div>
           </article>
         `;
       }
       const sim = simulationState.matchResultsById.get(m.id);
       const homeName = matchTeamName(m.homeTeam, sim?.homeTeam);
       const awayName = matchTeamName(m.awayTeam, sim?.awayTeam);
-      const meta = [m.date, m.localTime].filter(Boolean).join(' • ') || 'TBD';
+      const meta = fmtUserDateTime(m.date, m.localTime, true) || 'TBD';
       const score = sim ? `${sim.homeScore} - ${sim.awayScore}` : '—';
       return `
         <article class="spider-match">
@@ -1210,8 +1398,8 @@ const BAR_COLOURS = ['#da3633','#e3692e','#d29922','#2ea043',
             ${spiderTeamLine(homeName)}
             ${spiderTeamLine(awayName)}
           </div>
-          <div class="spider-meta" style="font-weight:700;color:var(--text);">${score}</div>
-          <div class="spider-meta">${meta}</div>
+          <div class="spider-match-score">${score}</div>
+          <div class="spider-match-time">${meta}</div>
         </article>
       `;
     }
@@ -1309,11 +1497,35 @@ const BAR_COLOURS = ['#da3633','#e3692e','#d29922','#2ea043',
             ${spiderTeamLine(finalAway)}
           </div>
           <div class="spider-meta" style="font-weight:700;color:var(--text);">${finalResult ? `${finalResult.homeScore} - ${finalResult.awayScore}` : '—'}</div>
-          <div class="spider-meta">${final ? [final.date, final.localTime].filter(Boolean).join(' • ') : 'TBD'}</div>
+          <div class="spider-meta">${final ? fmtUserDateTime(final.date, final.localTime) || [final.date, final.localTime].filter(Boolean).join(' • ') : 'TBD'}</div>
         </div>
       `;
 
-      spiderWrapEl.innerHTML = `${renderSide(left, false)}<div class="spider-center">${finalHtml}</div>${renderSide(right, true)}`;
+      const thirdPlaceFinal = matches.find(m => m.round === '3rd Place Final') || null;
+      const thirdPlaceResult = thirdPlaceFinal ? simulationState.matchResultsById.get(thirdPlaceFinal.id) : null;
+      const thirdPlaceHome = thirdPlaceFinal ? matchTeamName(thirdPlaceFinal.homeTeam, thirdPlaceResult?.homeTeam) : 'TBD';
+      const thirdPlaceAway = thirdPlaceFinal ? matchTeamName(thirdPlaceFinal.awayTeam, thirdPlaceResult?.awayTeam) : 'TBD';
+
+      const thirdPlaceHtml = thirdPlaceFinal ? `
+        <div class="spider-final spider-third-place-final">
+          <div class="spider-round-label">3rd Place Final</div>
+          <div class="spider-teams">
+            ${spiderTeamLine(thirdPlaceHome)}
+            ${spiderTeamLine(thirdPlaceAway)}
+          </div>
+          <div class="spider-meta" style="font-weight:700;color:var(--text);">${thirdPlaceResult ? `${thirdPlaceResult.homeScore} - ${thirdPlaceResult.awayScore}` : '—'}</div>
+          <div class="spider-meta">${thirdPlaceFinal ? fmtUserDateTime(thirdPlaceFinal.date, thirdPlaceFinal.localTime) || [thirdPlaceFinal.date, thirdPlaceFinal.localTime].filter(Boolean).join(' • ') : 'TBD'}</div>
+        </div>
+      ` : `<div class="spider-third-place">3rd Place Final</div>`;
+
+      const centerContent = `
+        <div class="spider-finals-container">
+          ${finalHtml}
+          ${thirdPlaceHtml}
+        </div>
+      `;
+
+      spiderWrapEl.innerHTML = `${renderSide(left, false)}<div class="spider-center">${centerContent}</div>${renderSide(right, true)}`;
     }
 
     if (programDataLoaded && Array.isArray(programDataLoaded.matches)) {

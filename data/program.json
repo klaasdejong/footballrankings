@@ -1726,6 +1726,28 @@
       }
     },
     {
+      "id": "third-place-103",
+      "matchNumber": 103,
+      "stage": "Knockout Stage",
+      "round": "3rd Place Final",
+      "group": null,
+      "date": "2026-07-18",
+      "localTime": "12:00 p.m. UTC−5",
+      "homeTeam": "Loser Match 101",
+      "awayTeam": "Loser Match 102",
+      "venue": {
+        "name": "SoFi Stadium",
+        "city": "Inglewood"
+      },
+      "status": "scheduled",
+      "source": {
+        "provider": "Wikipedia",
+        "page": "2026_FIFA_World_Cup",
+        "sectionAnchor": "3rd Place Final",
+        "confidence": "medium"
+      }
+    },
+    {
       "id": "final-104",
       "matchNumber": 104,
       "stage": "Knockout Stage",
